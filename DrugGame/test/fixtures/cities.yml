@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  clean: false
+  enemy_chance: 1
+  event_chance: 1
+  min_units: 1
+  max_units: 1
+  bank: false
+  loanshark: false
+  shop: false
+  pub: false
+  hospital: false
+
+two:
+  name: MyString
+  clean: false
+  enemy_chance: 1
+  event_chance: 1
+  min_units: 1
+  max_units: 1
+  bank: false
+  loanshark: false
+  shop: false
+  pub: false
+  hospital: false

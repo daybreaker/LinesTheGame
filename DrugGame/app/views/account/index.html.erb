@@ -1,0 +1,74 @@
+<html>
+<head><style type="text/css">
+#full_table { 
+width: 80%; 
+}
+#tiny_table { 
+width: 25%; 
+}
+#small_table { 
+width: 40%; 
+}
+</style>
+</head>
+
+<body>
+<center>
+ 
+<% if session[:user_id] %>
+	<% if @user.nil? %>
+		<%= link_to "Login", "account/login", :controller => 'account' %><br/>
+		or <%= link_to "Register", "account/registration", :controller => 'account' %>
+			
+	<% elsif @user.bank.nil? or @user.end_of_turn == true %>
+		<h1>Hello <%= @user.username %><br/>
+		<%= link_to "New Game", "/account/new_game", :controller => 'account' %></h1>
+		
+		<div align="left">
+		<h2>High Scores</h2>
+		<% @scores = HighScore.find( :all, :order => "score DESC" ) %>
+		  <% @scores.each do |score_list| -%>
+			<h3>
+			   Name: <b></b><%= score_list.name %></b> | Earnings: $<%= number_with_delimiter(score_list.score) %> | Completed visit: <%= String(score_list.alive) %>
+			</h3>
+			<br/>
+		  <% end -%>
+		</div>
+	<% elsif @user.days_remaining < 0 %>
+		<h1>You have completed your visit!</h1>
+		<% score = @user.wallet + @user.bank.savings_account - @user.bank.loan_amount %>
+		<h1>You had $<%= number_with_delimiter(score) %>.</h1>
+		<% HighScore.create(:name => @user.username, :score => score, :alive => @user.free) %>
+		<% @user.end_of_turn = true %>
+		<% @user.save %>
+	 	<%= form_tag('/account/index', :method => :get, :controller => 'account' ) do %>
+			<%= submit_tag 'Done' %>
+		<% end %>
+	<% elsif @user.current_endurance < 1 %>
+		<h1>You have been asked to leave the park.</h1>
+		<% score = @user.wallet + @user.bank.savings_account - @user.bank.loan_amount %>
+		<h1>You had $<%= score%>.</h1>
+		<% HighScore.create(:name => @user.username, :score => score, :alive => @user.free) %>
+		<% @user.end_of_turn = true %>
+		<% @user.save %>
+	 	<%= form_tag('/account/index', :method => :get, :controller => 'account' ) do %>
+			<%= submit_tag 'Done' %>
+		<% end %>
+	<% else %>
+		<% if @user.encounter.nil? %>
+			<% if @user.event.nil? %>
+	 			<%= render 'main' %></br>	 			
+ 			<% else %>
+	 			<%= render 'event' %></br>
+	 		<% end %>
+ 		<% else %>
+ 			<%= render 'combat' %></br>
+ 		<% end %>
+	<% end %>		
+<% else %>
+	<%= link_to "Login", "account/login", :controller => 'account' %><br/>
+	or <%= link_to "Register", "account/registration", :controller => 'account' %>	
+<% end %>	
+</center>
+</body>
+</html>

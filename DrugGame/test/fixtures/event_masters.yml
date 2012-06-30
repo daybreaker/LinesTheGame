@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  event_chance: 
+  type: 1
+  type_arg1: 1
+  type_arg2: 1
+  type_arg3: 1
+  type_arg4: 1
+  message_str: MyString
+
+two:
+  user_id: 1
+  event_chance: 
+  type: 1
+  type_arg1: 1
+  type_arg2: 1
+  type_arg3: 1
+  type_arg4: 1
+  message_str: MyString

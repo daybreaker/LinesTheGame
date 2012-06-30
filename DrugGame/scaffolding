@@ -1,0 +1,24 @@
+rails generate migration AddCashToEncounter cash:integer
+
+rails generate model Drug name:string clean:integer low_price:integer high_price:integer cheap_chance:integer cheap_str:string cheap_str2:string cheap_divide:integer expensive_chance:integer expensive_str:string expensive_str2:string expensive_multiply:integer
+
+rails generate model City name:string clean:boolean enemy_chance:integer event_chance:integer min_units:integer max_units:integer bank:boolean loanshark:boolean shop:boolean pub:boolean hospital:boolean
+
+rails generate model Bank loan_amount:integer loan_interest:integer savings_account:integer interest:integer
+
+rails generate model Agent name:string speed:integer accuracy:integer evasion:integer endurance:integer gun:integer min_deputies:integer max_deputies:integer
+
+rails generate model Gun name:string price:integer space:integer damage:integer
+
+rails generate migration CreateDrugWarsData 
+
+rails generate model FollowerType name:string accuracy:integer endurance:integer evasion:integer speed:integer clean:boolean
+
+rails generate model Encounter name:string type_id:integer user_id:integer current_endurance:integer
+
+rails generate model HighScore name:string integer:score boolean:alive
+
+rails generate model Encounter agent_type:string current_endurance:integer cash:integer
+
+rails generate model Event user_id:integer type:integer type_arg1:integer type_arg2:integer type_arg3:integer type_arg4:integer message_str:string 
+

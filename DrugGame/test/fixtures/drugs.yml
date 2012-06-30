@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  clean: 1
+  low_price: 1
+  high_price: 1
+  cheap_chance: 1
+  cheap_str: MyString
+  cheap_str2: MyString
+  cheap_divide: 1
+  expensive_chance: 1
+  expensive_str: MyString
+  expensive_str2: MyString
+  expensive_multiply: 1
+
+two:
+  name: MyString
+  clean: 1
+  low_price: 1
+  high_price: 1
+  cheap_chance: 1
+  cheap_str: MyString
+  cheap_str2: MyString
+  cheap_divide: 1
+  expensive_chance: 1
+  expensive_str: MyString
+  expensive_str2: MyString
+  expensive_multiply: 1

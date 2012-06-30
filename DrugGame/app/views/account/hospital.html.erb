@@ -1,0 +1,41 @@
+<html>
+<head><style type="text/css">
+#full_table { 
+width: 80%; 
+}
+#tiny_table { 
+width: 25%; 
+}
+#small_table { 
+width: 40%; 
+}
+</style>
+</head>
+
+<body>
+<center>
+ 
+<% if session[:user_id] %>
+		<% if session[:user_id] %>
+	    <h1><%= City.find_by_id(@user.location).name %></h1>
+ 		<%= render 'stats' %>
+		<table id="full_table">
+			<tr>
+				<% city = City.find_by_id(@user.location) -%>
+				<td id="small_table"> <% if city.hospital %>Hospital<%= form_tag('/account/healing', :method => :post, :controller => 'account' ) do %>
+						<% heal_cost = (@user.endurance - @user.current_endurance) * 900 %>
+						Full treatment will cost $<%= heal_cost%>
+  						<%= text_field_tag 'amount' %><br/>
+  						<%= submit_tag 'Heal' %>
+				<% end %><% end %></td>
+			</tr>
+		</table>
+	<% end %>
+	<%= link_to "Back to Park", "/account/"%>		
+<% else %>
+	<%= link_to "Login", "/account/login", :controller => 'account' %><br/>
+	or <%= link_to "Register", "/account/registration", :controller => 'account' %>	
+<% end %>	
+</center>
+</body>
+</html>

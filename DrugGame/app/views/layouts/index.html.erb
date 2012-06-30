@@ -1,0 +1,12 @@
+<h1>Welcome To The Game</h1>
+ 
+<% if logged_in? %>
+<h2><%= @current_user.login %></h2>
+ 
+<ul>
+  <li>Attack: <strong><%= @current_user.attack %></strong></li>
+  <li>Defense: <strong><%= @current_user.defense %></strong></li>
+  <li>Magic: <strong><%= @current_user.speed %></strong></li>
+  <li>Gold in hand: <strong><%= @current_user.endurance %></strong></li>
+</ul>
+<% end %>

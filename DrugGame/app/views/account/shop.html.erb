@@ -1,0 +1,63 @@
+<html>
+<head><style type="text/css">
+#full_table { 
+width: 80%; 
+}
+#tiny_table { 
+width: 25%; 
+}
+#small_table { 
+width: 40%; 
+}
+</style>
+</head>
+
+<body>
+<center>
+ 
+<% if session[:user_id] %>
+		<% if session[:user_id] %>
+	    <h1><%= City.find_by_id(@user.location).name %></h1>
+ 		<%= render 'stats' %>
+		<table id="full_table">
+			<tr>
+				<% city = City.find_by_id(@user.location) -%>
+				<td id="small_table"><% if city.shop %>
+				<% @gunshop = Gun.all %>
+				<% @gunshop.each do |gunshop| -%>
+					<%= gunshop.name %> 
+					<%= gunshop.space %> spaces 
+					$<%= gunshop.price %><br/>
+					<table><tr><td>
+					<%= form_tag("/account/buy_gun", :method => "get") do %>
+						<%= hidden_field_tag('id', gunshop.id) %>
+	 					<%= submit_tag("Buy") %>
+  					<% end -%>
+  					</td></tr></table><div>
+				<% end -%>					
+				<% end %></td>
+				<td id="small_table"><% if city.shop %>
+				<% @user.gun_instances.all.each do |gunsell| -%>
+					<% gunshop = Gun.find_by_id(gunsell.type_id) %>
+					<%= gunshop.name %> 
+					<%= gunshop.space %> spaces 
+					$<%= gunshop.price %><br/>
+					<table><tr><td>
+					<%= form_tag("/account/sell_gun", :method => "get") do %>
+						<%= hidden_field_tag('id', gunshop.id) %>
+	 					<%= submit_tag("Sell") %>
+  					<% end -%>
+  					</td></tr></table><div>
+				<% end -%>					
+				<% end %></td>
+			</tr>
+		</table>
+	<% end %>
+	<%= link_to "Back to Park", "/account/"%>		
+<% else %>
+	<%= link_to "Login", "/account/login", :controller => 'account' %><br/>
+	or <%= link_to "Register", "/account/registration", :controller => 'account' %>	
+<% end %>	
+</center>
+</body>
+</html>

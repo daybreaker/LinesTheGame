@@ -1,0 +1,35 @@
+<table id="full_table">
+		<td>
+		  <h3>About You</h3>
+		  Name: <%= @user.username %><br/>
+		  Endurance: <%= @user.current_endurance %> out of <%= @user.endurance %><br/>
+		  Speed: <%= @user.speed %><br/>
+		  Accuracy: <%= @user.accuracy %><br/>
+		  Evasion: <%= @user.evasion %><br/>
+		</td>
+		<td>
+		  <h3>Finances</h3>
+		  You have $<%= number_with_delimiter(@user.wallet) %> in your pocket<br/>
+		  You have $<%= number_with_delimiter(@user.bank.savings_account) %> in the bank<br/>
+		  Outstanding bank loans: $<%= number_with_delimiter(@user.bank.loan_amount) %> owed<br/>
+		  Your trip has <%= @user.days_remaining %> days left<br/>
+		  Your backpack has <%= (@user.spaces_free) %> free spaces out of <%= @user.spaces_total %> total<br/>
+		</td>
+		<td id="tiny_table">
+		  <h3>Your Tools</h3>
+		  <% @guns = @user.gun_instances.all %>
+		  <% @guns.each do |guns| -%>
+			<% gunstats = Gun.find_by_id(guns.type_id) %>
+			<b></b><%= gunstats.name %></b> has strength of <b><%= gunstats.damage %></b> and takes <b><%= gunstats.space %></b> spaces in your backpack<br/>
+		  <% end -%><br/>
+		</td>
+		<td id="tiny_table">
+		  <h3>Your Team</h3>
+		  <% @followers = @user.followers.all %>
+		  <% @followers.each do |npc| -%>
+			<% npct = FollowerType.find_by_id(npc.type_id) %>
+			Name: <%= npc.name %><br/>
+			Endurance: <%= npc.current_endurance %> out of <%= npct.endurance %><br/>
+		  <% end -%><br/>
+		</td>
+</table>

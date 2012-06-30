@@ -1,0 +1,36 @@
+		<% user_loc = City.find_by_id(@user.location)%>		
+		<% @cur_fight = Encounter.find_by_id(@user.encounter)%>
+		<h1><%= user_loc.name %></h1>
+		<% if @cur_fight.encounter_messages.exists?%>
+			<% @cur_fight.encounter_messages.all.each do |mesg| -%>
+				<h2><%= mesg.name %></h2>
+	  		<% end -%>
+  		<% end -%>
+  		<% if @cur_fight.type_id == 0%>
+			<% @user.encounter.delete %>
+ 			<%= form_tag('/account/index', :method => :get, :controller => 'account' ) do %>
+  				<%= submit_tag 'Done' %>
+			<% end %>
+		<% else %>
+			<h2>You are being chased by <%= @cur_fight.name %></h2>
+	 		<%= render 'stats' %>
+	 		<%= render 'enc_stats' %>
+	 		<table id="small_table" align="center">
+	 			<tr>
+	 				<td><% if @user.bags.exists? or @user.gun_instances.exists? %>
+	 					<%= form_tag('/account/run', :method => :post, :controller => 'account' ) do %>
+	  						<%= submit_tag 'Run' %>
+						<% end %>
+	 				<% else %>
+	 					<%= form_tag('/account/stay', :method => :post, :controller => 'account' ) do %>
+	  						<%= submit_tag 'Stay' %>
+						<% end %>
+	 				<% end %></td>
+	 				<% if @user.gun_instances.exists? %>
+	 					<td><%= form_tag('/account/fight', :method => :post, :controller => 'account' ) do %>
+	  						<%= submit_tag 'Fight' %>
+						<% end %></td>
+	 				<% end %>
+	 			</tr>
+			</table>
+		<% end %>

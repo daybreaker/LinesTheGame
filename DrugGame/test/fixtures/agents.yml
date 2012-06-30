@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  speed: 1
+  accuracy: 1
+  evasion: 1
+  endurance: 1
+  gun: 1
+  min_deputies: 1
+  max_deputies: 1
+
+two:
+  name: MyString
+  speed: 1
+  accuracy: 1
+  evasion: 1
+  endurance: 1
+  gun: 1
+  min_deputies: 1
+  max_deputies: 1

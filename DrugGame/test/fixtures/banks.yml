@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  loan_amount: 1
+  loan_interest: 1
+  savings_account: 1
+  interest: 1
+
+two:
+  loan_amount: 1
+  loan_interest: 1
+  savings_account: 1
+  interest: 1

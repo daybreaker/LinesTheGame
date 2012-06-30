@@ -1,0 +1,29 @@
+		<% user_loc = City.find_by_id(@user.location)%>		
+		<% @cur_event = Event.find_by_id(@user.event)%>
+		<h1>You are in <%= user_loc.name %></h1>
+		
+		<!-- this prints messages to the user -->
+		<% @user.messages.all.each do |mesg| -%>
+			<h2><%= mesg.name %></h2>
+  		<% end -%><br/>
+  		
+	 	<%= render 'stats' %>
+ 		<table id="full_table" align="center">
+ 			<tr>
+ 				<td>
+ 				<% if @cur_event.event_type == 1 %>
+ 					<h2>Do you want to hire <%= FollowerType.find_by_id(@cur_event.type_arg1).name %> for $<%= number_with_delimiter(@cur_event.type_arg2) %>?</h2>
+ 					<% if @cur_event.type_arg2 > @user.wallet %>
+ 						<h4>Not enough money</h4>
+ 					<% else %>
+	 					<%= form_tag('/account/event_accept', :method => :post, :controller => 'account' ) do %>
+	  						<%= submit_tag 'Yes' %>
+						<% end %>
+					<% end %>
+	 				<%= form_tag('/account/event_reject', :method => :post, :controller => 'account' ) do %>
+  						<%= submit_tag 'No' %>
+					<% end %>
+				<% end %>
+				</td>
+ 			</tr>
+		</table>

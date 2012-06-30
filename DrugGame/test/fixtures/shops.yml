@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: 1
+  price: 1
+  type_id: 1
+  user_id: 1
+
+two:
+  name: 1
+  price: 1
+  type_id: 1
+  user_id: 1

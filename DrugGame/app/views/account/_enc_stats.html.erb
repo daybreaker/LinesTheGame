@@ -1,0 +1,28 @@
+<table id="full_table">
+		<td>
+		  <h3>Your Opponent(s)</h3><br/>
+		  Name: <%= @cur_fight.name %><br/>
+		  Type: <% agent_type = Agent.find_by_id(@cur_fight.type_id) %>
+		  Endurance: <%= @cur_fight.current_endurance %>/<%= agent_type.endurance %><br/>
+		  Speed: <%= agent_type.speed %><br/>
+		  Accuracy: <%= agent_type.accuracy %><br/>
+		  Evasion: <%= agent_type.evasion %><br/>
+		</td>
+		<td id="tiny_table">
+		  <h3>Opponent(s) Tools</h3><br/>
+		  <% @guns = @cur_fight.gun_instances.all %>
+		  <% @guns.each do |guns| -%>
+			<% gunstats = Gun.find_by_id(guns.type_id) %>
+			<%= gunstats.name %> causes damage of <b><%= gunstats.damage %></b> to you and <b><%= gunstats.space %></b> spaces of your backpack<br/>
+		  <% end -%><br/>
+		</td>
+		<td id="tiny_table">
+		  <h3>Opponents' Team</h3><br/>
+		  <% @followers = @cur_fight.followers.all %>
+		  <% @followers.each do |npc| -%>
+			<% npct = FollowerType.find_by_id(npc.type_id) %>
+			Name: <%= npc.name %><br/>
+			Endurance: <b></b><%= npc.current_endurance %></b> out of <b><%= npct.endurance %></b><br/>
+		  <% end -%><br/>
+		</td>
+</table>

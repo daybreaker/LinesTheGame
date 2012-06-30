@@ -1,0 +1,10 @@
+<% if flash[:notice] %>
+  <%= h flash[:notice] %>
+<% end %>
+ 
+<%= form_for :user do |f| %>
+ 
+  Username: <%= f.text_field :username %><br/>
+  Password: <%= f.password_field :password %><br/>
+  <%= submit_tag "Login" %>
+<% end %>
