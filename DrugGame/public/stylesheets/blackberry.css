@@ -1,0 +1,516 @@
+/* iui.css (c) 2007-9 by iUI Project Members, see LICENSE.txt for license */
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica;
+	background: #FFFFFF;
+	color: #000000;
+	overflow-x: hidden;
+}
+
+/************************************************************************************************/
+
+body ul {
+  margin: 0;
+  padding: 0;
+	list-style: none;
+}
+
+body ul li {
+	margin: 0;
+	padding: 5px 7px 5px 7px;
+	border-bottom: 1px solid #E0E0E0;
+	font-size: 18px;
+	font-weight: bold;
+	list-style: none;
+	clear: both;
+}
+
+body ul li a {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	color: #0063C7;
+	list-style: none;
+}
+
+/************************************************************************************************/
+
+/* our hacks */
+
+h2 {
+  margin: 10px;
+  color: slateblue;
+}
+
+p {
+  margin: 10px;
+}
+
+/* colors */
+.blue { color: #0063C7; }
+.red { color: #F3282B; }
+.green { color: #06c40c; }
+.purple { color: #CD32DD; }
+.light_purple { color: #CD32DD; }
+.dark_purple { color: #420297; }
+.grey { color: #777777; }
+.dark_grey { color: #555555; }
+.black { color: #000000; }
+.very_merry { color: #008001; }
+.not_so_scary { color: #ff5c00; }
+.startours { color: #f87c26; }
+
+div.text {
+	padding: 0.5em;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+select {
+  margin: 8px 8px 8px 8px;
+  padding: 6px 6px 6px 64px;
+  font-size: 22px;
+  font-weight: normal;
+}
+
+select.entities {
+  font-size: 19px !important;
+}
+
+select.sorting {
+  font-size: 18px !important;
+}
+
+/* makes the li_values white as well on a:active state */
+
+#login div.label {
+  font-weight: bold;
+  padding-left: 5px;
+}
+
+#login p.trouble {
+  font-size: 14px;
+}
+
+#login div.row input {
+  padding-left: 15px;
+}
+
+li h3 {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333333;
+}
+
+ul#show {
+  clear: both;
+}
+
+li.show_header {
+  padding: 5px 0;
+}
+
+li.header { 
+  text-align: center;
+}
+
+li div.park_name {
+  text-align: center;
+  font-size: 120%;
+}
+
+li div.hours {
+  text-align: center;
+  font-size: 85%;
+}
+
+li div.announcement {
+  text-align: center;
+  font-size: 85%;
+  padding: 5px;
+  border: 1px solid #F3282B;
+}
+
+li.divider {
+  text-align: center;
+}
+
+div.note { 
+  margin: 0;
+  font-size: 14px;
+  text-align: right;
+  color: #555555;
+  padding: 5px 0 0 0;
+  font-style: italic;
+}
+
+a.regular {
+	color: #0063C7;
+}
+
+.park_strip {
+  font-size: 85%;
+  color: #777777;
+  font-style: italic;
+  text-align: center;
+}
+
+.park_strip_refresh {
+  font-size: 85%;
+  color: #777777;
+  text-align: center;
+}
+
+.fine_print {
+  font-size: 80%;
+  color: #777777;  
+}
+
+div.header {
+  text-align: center;
+	font-weight: bold;
+	padding: 0.5em 0;
+}
+
+div.notice { 
+  font-size: 100%;
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+form .row > label {
+  line-height: 55px;
+	font-size: 110%;
+}
+
+#login div.row input {
+  padding-left: 15px;
+}
+
+div.add_time {
+  float: right;
+  padding: 5px 0 0 0;
+  margin: 0;
+  font-size: 115%;
+}
+
+div.back_button {
+  float: left;
+  padding: 5px 0 0 0;
+  margin: 0;
+  font-size: 115%;
+}
+
+li div.status {
+  float: right;
+  padding: 0px;
+  margin: 0px;
+}
+
+li div.status span.min {
+  font-size: 16px;
+}
+
+.center {
+  text-align: center;
+}
+
+div.bb_edit_label {
+  float: left;
+  padding: 5px 10px 5px 0px;
+  width: 125px;
+}
+
+div.bb_sort_label {
+  float: left;
+  padding: 5px 10px 5px 0px;
+  width: 50px;
+}
+
+#entities_instructions li.sub, #faq li.sub {
+  font-weight: normal !important;
+}
+
+ul li a.back {
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+
+ul li.one_sub {
+	padding-bottom: 20px;
+}
+
+ul li.two_sub {
+	padding-bottom: 40px;
+}
+
+ul li.three_sub {
+	padding-bottom: 60px;
+}
+
+a.line_name {
+  width: 300px;
+}
+
+li div.sub_left {
+	font-size: 75%;
+	margin: 2px 0 0 0;
+	padding: 0;
+	color: #999999;
+	font-style: italic;
+}
+
+li .sub_status {
+  float: right;
+  font-size: 85%;
+	font-weight: normal;
+}
+
+li .two_sub_status {
+  float: right;
+  clear: both;
+  font-size: 85%;
+	font-weight: normal;
+}
+
+li .sub_status_wrap {
+  float: right;
+  clear: both;
+  padding: 0;
+  margin: 0;
+}
+
+li.land_header {
+	font-size: 90%;
+	margin: 0;
+	padding-top: 5px;
+	padding-bottom: 3px;
+	color: white;
+}
+
+a.user_link {
+  color: #777777;
+  display: inline;
+	margin: 0;
+	padding: 0;
+	text-decoration: underline;	
+}
+
+span.user_login {
+  color: #777777;
+}
+
+span.label {
+  color: #000000;
+  font-weight: normal;
+  font-size: 85%;
+	}
+
+.chat_responses {
+  border-top: 1px solid #cccccc;
+  font-size: 95%;
+  margin-top: 5px;
+  padding-left: 10px;
+}
+
+.chat_form_wrap {
+  margin-top: 5px;
+  padding-left: 10px;
+}
+
+.chat_thread_info {
+  font-size: 90%;
+}
+
+.chat_thread_limit {
+  float: left;
+  font-size: 13px;
+  margin-top: 5px;
+  padding-top: 0px;
+  color: #777777;
+}
+
+.chat_thread_submit {
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
+.chat_thread_input {
+  margin: 0;
+  padding: 0;
+}
+
+.chat_reply_limit {
+  float: left;
+  font-size: 13px;
+  margin-top: 5px;
+  padding-top: 0px;
+  color: #999999;
+}
+
+.chat_reply_submit {
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
+.chat_paginate_wrap {
+  text-align: center;
+}
+
+.chat_delete_wrap {
+  margin-bottom: 5px;
+}
+
+.chat_link_bump {
+  margin: 2px 0;
+}
+
+span.disabled {
+  color: #777777;
+}
+
+#loginForm {
+    width: 225px;
+}
+
+li > a.grey_out {
+  color: #bbbbbb !important;
+}
+
+a.upsell {
+  color: #008001 !important;
+}
+
+.view_selected_plan {
+  text-align: center;
+	font-size: 95%;
+}
+
+li.complete_steps, li.complete_steps a {
+	color: #777777;
+}
+
+.sub_plan_one {
+  padding-left: 10px;
+  font-size: 90%;
+}
+
+.sub_plan_two {
+  padding-left: 10px;
+  font-size: 90%;
+  font-style: italic;
+}
+
+div.bottom_pad {
+  margin-bottom: 8px;
+}
+
+
+
+
+.lines_menu_item input, 
+.lines_menu_item select {
+  padding: 3px;
+  margin: 3px;
+  font-size: 16px;
+  width: 100%;
+}
+
+
+.lines_menu_item .submit {
+  width: auto;
+  padding: 6px 20px;
+  text-align: center;
+}
+
+.lines_menu_item #snack {
+  width: auto;
+}
+
+#menu_item_search .pagination span,
+#menu_item_search .pagination a {
+  margin: 5px 2px;
+}
+
+div.panel h3.result_count{
+  margin: 7px;
+  font-size: 1em;
+}
+
+
+
+
+/**********************************************************
+
+Additional styles for opera mini compatibility
+Author: Matthew Murchison
+
+***********************************************************/
+
+
+@media handheld, screen and (max-width: 480px), screen and (max-device-width: 480px)   {
+
+    #loginForm {
+        width: 210px;
+    }
+
+    #login div div input {
+        width: 210px;
+    }
+
+    #user_session_submit {
+        width: 125px !important;
+    }
+
+    #new_entity select {
+        padding: 4px;
+    }
+
+    #sort {
+        padding: 4px;
+    }
+}
+
+@media handheld, screen and (max-width: 479px), screen and (max-device-width: 479px)   {
+
+    div.bb_edit_label {
+        width: 60px;
+    }
+
+    div.bb_sort_label {
+        width: 15px;
+    }
+
+    #loginForm {
+        width: 125px;
+    }
+
+    #login div div input {
+        width: 125px;
+    }
+
+    #user_session_submit {
+        width: 100px !important;
+    }
+
+    #new_entity select {
+        padding: 4px;
+    }
+
+    #sort {
+        padding: 4px;
+    }
+
+}

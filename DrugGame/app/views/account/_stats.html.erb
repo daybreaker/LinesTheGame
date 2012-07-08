@@ -1,30 +1,48 @@
-<table id="full_table">
+<!------------------------------------------------------------------>
+<!-- this section is part of game_stats_table from _main.html.erb -->
+<!------------------------------------------------------------------>
+   <tr class="game_stats_row">
 		<td>
-		  <h3>About You</h3>
-		  Name: <%= @user.username %><br/>
-		  Endurance: <%= @user.current_endurance %> out of <%= @user.endurance %><br/>
-		  Speed: <%= @user.speed %><br/>
-		  Accuracy: <%= @user.accuracy %><br/>
-		  Evasion: <%= @user.evasion %><br/>
+		  <span class="blue_bold">About You</span></br>
+		  <span class="game_app_label">Name:</span>			<span class="game_app_data"><%= @user.username %></span><br/>
+		  <span class="game_app_label">Endurance:</span> 	<span class="game_app_data"><%= @user.current_endurance %> out of <%= @user.endurance %></span><br/>
+		  <span class="game_app_label">Speed:</span> 		<span class="game_app_data"><%= @user.speed %></span><br/>
+		  <span class="game_app_label">Accuracy:</span> 	<span class="game_app_data"><%= @user.accuracy %></span><br/>
+		  <span class="game_app_label">Evasion:</span> 		<span class="game_app_data"><%= @user.evasion %></span><br/>
 		</td>
+		
+	</tr>
+	
+	<tr class="game_stats_row">
 		<td>
-		  <h3>Finances</h3>
-		  You have $<%= number_with_delimiter(@user.wallet) %> in your pocket<br/>
-		  You have $<%= number_with_delimiter(@user.bank.savings_account) %> in the bank<br/>
-		  Outstanding bank loans: $<%= number_with_delimiter(@user.bank.loan_amount) %> owed<br/>
-		  Your trip has <%= @user.days_remaining %> days left<br/>
-		  Your backpack has <%= (@user.spaces_free) %> free spaces out of <%= @user.spaces_total %> total<br/>
+		  <span class="blue_bold">Finances</span></br>
+		  
+		  <span class="game_app_label">In pocket:</span>			<span class="game_app_data"> $ <%= number_with_delimiter(@user.wallet) %></span><br/>
+		  <span class="game_app_label">In bank:</span>				<span class="game_app_data"> $ <%= number_with_delimiter(@user.bank.savings_account) %></span><br/>
+		  <span class="game_app_label">Loans owed:</span>			<span class="game_app_data"> $ <%= number_with_delimiter(@user.bank.loan_amount) %></span><br/>
+		  <span class="game_app_label">Trip days left:</span>		<span class="game_app_data"> <%= @user.days_remaining %></span><br/>
+		  <span class="game_app_label">Backpack: </span>			<span class="game_app_data"> <%= (@user.spaces_free) %> out of <%= @user.spaces_total %> free</span><br/>
 		</td>
-		<td id="tiny_table">
-		  <h3>Your Tools</h3>
+	</tr>
+	
+	
+	
+	<tr class="game_stats_row">
+		<td>
+		  <span class="blue_bold">Your Tools</span></br>
 		  <% @guns = @user.gun_instances.all %>
 		  <% @guns.each do |guns| -%>
 			<% gunstats = Gun.find_by_id(guns.type_id) %>
-			<b></b><%= gunstats.name %></b> has strength of <b><%= gunstats.damage %></b> and takes <b><%= gunstats.space %></b> spaces in your backpack<br/>
+			<span class="game_app_data"><b><%= gunstats.name %></b> strength of <b><%= gunstats.damage %></b> and takes <b><%= gunstats.space %></b> spaces in your backpack</span><br/>
 		  <% end -%><br/>
 		</td>
-		<td id="tiny_table">
-		  <h3>Your Team</h3>
+	</tr>
+	
+	
+	
+	<tr class="game_stats_row">
+		<td>
+		  <span class="blue_bold">Your Team</span></br>
 		  <% @followers = @user.followers.all %>
 		  <% @followers.each do |npc| -%>
 			<% npct = FollowerType.find_by_id(npc.type_id) %>
@@ -32,4 +50,4 @@
 			Endurance: <%= npc.current_endurance %> out of <%= npct.endurance %><br/>
 		  <% end -%><br/>
 		</td>
-</table>
+	</tr>

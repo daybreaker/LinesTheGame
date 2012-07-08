@@ -1,0 +1,1166 @@
+/* our hacks */
+
+body > ul > li {
+  font-size: 18px;
+}
+
+body > ul > li > a {
+  padding-left: 10px;
+	background: none;
+}
+
+body > ul > li > a.one_sub {
+	padding-bottom: 20px;
+}
+
+body > ul > li > a.two_sub {
+	padding-bottom: 35px;
+}
+
+body > ul > li > a.three_sub {
+	padding-bottom: 55px;
+}
+
+body > ul > li > a.arrow {
+  display: block;
+  margin: -8px 0 -8px -10px;
+  padding: 8px 24px 8px 10px;
+  text-decoration: none;
+  color: inherit;
+  background: url(/images/listArrowW.png) no-repeat right center;
+}
+
+body > ul > li > a.grey_out {
+  color: #bbbbbb !important;
+}
+
+li .li_value {
+  display: block;
+  position: absolute;
+  margin: 0;
+  right: 9px;
+  top: 1px;
+  text-align: right;
+  letter-spacing: -0.07em;
+  color: #0063C7;
+  font-weight: bold;
+  text-decoration: none;
+  height: 30px;
+  padding: 7px 0 0 0;
+  background: none;
+}
+
+li .li_value.index {
+  width: 100px !important;
+}
+
+div.sub_left {
+	font-size: 75%;
+	margin: 2px 0 0 0;
+	padding: 0;
+	color: #6E6869;
+	font-style: italic;
+}
+
+li .sub {
+  font-size: 75%;
+  font-weight: normal;
+  text-align: right;
+  width: 250px;
+  right: 9px;
+  color: #000000;
+  letter-spacing: -0.09em;
+}
+
+li .sub.grey {
+	color: #6E6869;
+}
+
+li .sub_one {
+  top: 22px;
+}
+
+li .sub_two {
+  top: 38px;
+}
+
+li .sub_three {
+  top: 54px;
+}
+
+li .sub_four {
+  top: 70px;
+}
+
+li .li_value.red {
+  color: red !important;
+}
+
+li span.reported_closed {
+  display: block;
+  position: absolute;
+  margin: 0;
+  left: 20px;
+  top: 25px;
+  text-align: left;
+  font-size: 75%;
+  letter-spacing: -0.07em;
+  color: red;
+  font-weight: bold;
+  text-decoration: none;
+	width: 250px;
+  height: 30px;
+  padding: 7px 0 0 0;
+	background: none;
+}
+
+
+li.short {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+li.land_header {
+	font-size: 90%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: white;
+}
+
+p {
+  margin: 10px;
+}
+
+.toolbar > h1 {
+	overflow: visible;
+}
+
+#lBack {
+  left: 6px;
+  right: auto;
+  max-width: 55px;
+  padding: 0;
+  border-width: 0 8px 0 14px;
+  -webkit-border-image: url(/images/backButton.png) 0 8 0 14;
+}
+
+body > ul > li.huge {
+	padding-bottom: 25px;
+}
+
+/* colors */
+.blue { color: #0063C7; }
+.red { color: #F3282B; }
+.green { color: #06c40c; }
+.purple { color: #CD32DD; }
+.light_purple { color: #CD32DD; }
+.dark_purple { color: #420297; }
+.grey { color: #777777; }
+.dark_grey { color: #555555; }
+.black { color: #000000; }
+.very_merry { color: #008001; }
+.not_so_scary { color: #ff5c00; }
+.startours { color: #f87c26 !important; }
+
+div.text {
+	padding: 0.5em;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.fieldset_text {
+	padding: 12px 8px 12px 14px;
+	text-align: left;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.fieldset_text ul {
+  margin: 5px 0 5px 20px;
+  padding: 0;
+}
+
+div.bottom_pad {
+  margin: 0 0 8px 0;
+}
+
+.panel > fieldset {
+	margin: 0 0 15px 0;
+}
+
+fieldset > div.header {
+	text-align: center;		
+	font-weight: bold;
+	padding: 0.5em 0;
+}
+
+fieldset > div.header > h1 {
+	font-size: 120%;
+	padding: 0;
+	margin: 0;
+}
+
+fieldset > div.header > div.sub_header {
+	font-size: 85%;
+}
+
+fieldset > div.row > h1 {
+	font-size: 120%;
+	padding: 10px 0 0 0;
+	margin: 0;
+}
+
+fieldset > .row > .huge {
+	padding-bottom: 25px;
+}
+
+fieldset > .huge {
+	padding-bottom: 25px;
+}
+
+.row.with_sub_status {
+	min-height: 47px;
+}
+
+.row.with_two_sub_status {
+	min-height: 60px;
+}
+
+.row > span {
+  display: block;
+  position: absolute;
+  margin: 0;
+  right: 10px;
+  top: 0px;
+  text-align: right;
+  font-size: 110%;
+  letter-spacing: -0.07em;
+  color: #0063C7;
+  font-weight: bold;
+  text-decoration: none;
+	width: 75px;
+  height: 30px;
+  padding: 10px 0 0 0;
+	background: none;
+}
+
+.row > span.big_status {
+	width: 125px;
+}
+
+.row > span.sub_status {
+  font-size: 85%;
+  padding: 28px 0 0 110px;
+  width: 125px;
+  color: #000000;
+}
+
+.row > span.two_sub_status {
+  font-size: 85%;
+  padding: 42px 0 0 110px;
+  width: 125px;
+  color: #000000;
+}
+
+.row > span.fp_status {
+  font-size: 85%;
+  padding: 28px 0 0 0;
+  width: 150px;
+  height: 18px;
+  color: #000000;
+}
+
+.row > span.sr_status {
+  font-size: 85%;
+  padding: 45px 0 0 0;
+  width: 150px;
+  height: 18px;
+  color: #000000;
+}
+
+.row > span.grey {
+  color: #777777 !important;
+}
+
+a.panel_a {
+	text-decoration: none;
+	color: #000000;
+}
+
+select {
+ -webkit-border-radius:10px;
+ -moz-border-radius:10px;
+  margin: 8px 8px 8px 8px;
+  padding: 6px 6px 6px 64px;
+  font-size: 22px;
+  font-weight: normal;
+}
+
+select.entities, select.select_type, select.minimal {
+  font-size: 19px !important;
+  width: 282px;
+}
+
+select.sorting {
+  font-size: 18px !important;
+}
+
+select.add_plan_step {
+  font-size: 19px !important;
+  width: 282px;
+	margin: 0;
+}
+
+select.update_plan_step {
+  font-size: 19px !important;
+	width: 100%;
+	margin: 0;
+}
+
+form .row > label {
+  line-height: 55px;
+	font-size: 110%;
+}
+
+form div.label, form > #statedrop > div.label {
+  font-weight: bold;
+  padding-left: 5px;
+}
+
+form div.row input {
+  padding-left: 15px;
+}
+
+input.whiteButton {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.panel a.fset {
+	display: block;
+  margin: 0 0 15px 0;
+	padding: 0;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border: 1px solid #999999;
+  text-align: left;
+	padding: 12px 0 0 14px;
+  height: 30px;
+	text-decoration: none;
+  color: #000000;
+	font-weight: bold;
+	background: url(/images/listArrowW.png) no-repeat right center;
+	background-color: #FFFFFF;
+}
+
+.panel > fieldset > .row > a {
+	display: block;
+	text-align: left;
+	padding: 12px 0 0 14px;
+	height: 30px;
+	text-decoration: none;
+  color: #000000;
+	font-weight: bold;
+	background: url(/images/listArrowW.png) no-repeat right center;
+}
+.panel > fieldset > .row:first-child > a {
+  -webkit-border-radius: 10px 10px 0 0;
+  -moz-border-radius: 10px 10px 0 0;
+}
+.panel > fieldset > .row:last-child > a {
+  -webkit-border-radius: 0 0 10px 10px;
+  -moz-border-radius: 0 0 10px 10px;
+}
+.panel > fieldset > .row:only-child > a {
+  -webkit-border-radius: 10px;
+}
+
+a.upsell {
+  color: #008001 !important;
+}
+
+a.regular.upsell[selected], a.regular.upsell:active {
+  background-color: #FFFFFF !important;
+  background: none !important;
+	color: #008001 !important;
+}
+
+/* makes the li_values white as well on a:active state */
+
+a[selected] span.li_value, a:active span.li_value {
+  color: #FFFFFF !important;
+}
+
+div.panel h2 {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+div.panel div.errors h2 {
+	color: red;
+}
+
+div.panel h3 {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333333;
+}
+
+div.panel div.note {
+  margin: -10px 0 10px 0;
+  font-size: 14px;
+  text-align: right;
+  color: #555555;
+  padding-right: 5px;
+  font-style: italic;
+}
+
+.blanket_bg {
+  position: absolute;
+  background-color: #111;
+  opacity: 0.55;
+  z-index: 9001;
+  top:0px;
+  left:0px;
+  height:372px;
+  width:100%;
+}
+
+.popup_div {
+  position: absolute;
+  background-color: #111;
+  opacity: 0.75;
+  top: 110px;
+  left: 80px;
+  height: 160px;
+  min-height: 0px;
+  width: 160px;
+  z-index: 9002;
+  -webkit-border-radius: 6px;
+}
+
+.popup_text {
+  position: absolute;
+  opacity: 1.0;
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: bold;
+  left: 105px;
+  top: 235px;
+  width: 120px;
+  z-index: 9003;
+}
+
+.popup_wheel {
+  position: absolute;
+  top: 170px;
+  left: 140px;
+  height: 50px;
+  width: 50px;
+  background-repeat: no-repeat;
+  background-position: left top;
+	background-image: url(/images/big_loading.gif) !important;
+	z-index: 9003;
+}
+
+a.whiteButton:active {
+  background-image: none !important;
+}
+
+fieldset.short {
+  margin-bottom: 12px;
+}
+
+label.for_toggle {
+  margin-top: -5px;
+}
+
+.row > div.byline {
+	position: absolute;
+	padding: 0;
+	margin: 15px 0 0 14px;
+	line-height: 42px;
+	font-weight: bold;
+  font-size: 95%;
+  color: #777777;
+}
+
+.row > div.byline.two {
+  margin: 30px 0 0 14px;
+}
+
+.row > div.byline.three {
+  margin: 45px 0 0 14px;
+}
+
+.row > div.byline.offline {
+  color: #000000 !important;
+  padding-top: 2px;
+}
+
+.row > div.byline.two.offline {
+  color: #000000 !important;
+  padding-top: 2px;
+}
+
+.row.one_sub {
+  padding-bottom: 10px;  
+}
+
+.row.two_sub {
+  padding-bottom: 22px;
+}
+
+.row.three_sub {
+  padding-bottom: 34px;
+}
+
+.row.offline {
+  padding-bottom: 30px;
+}
+
+.row > span.sub {
+  font-size: 95%;
+  color: #000000;
+  width: 150px;  
+}
+
+.row > span.sub_left {
+  font-size: 95%;
+  color: #000000;
+  width: 150px;
+  text-align: left;
+}
+
+.row > span.one_sub {
+  margin: 18px 0 0 0;  
+}
+
+.row > span.two_sub {
+  margin: 32px 0 0 0;
+}
+
+.row > span.three_sub {
+  margin: 46px 0 0 0;
+}
+
+.row.left_pad > label {
+	margin: 0 0 0 24px;
+}
+
+.row > div.fp {
+	padding: 0;
+	margin: 15px 0 0 0;
+	line-height: 25px;
+	font-weight: bold;
+  font-size: 95%;
+  float: right;
+}
+
+
+label.best_park {
+  margin: 0 0 0 8px !important;
+  padding-left: 16px;
+  background-repeat: no-repeat;
+  background-position: left;
+	background-image: url(/images/green_ball.png) !important;
+}
+
+label.park_to_avoid {
+  margin: 0 0 0 8px !important;
+  padding-left: 16px;
+  background-repeat: no-repeat;
+  background-position: left;
+	background-image: url(/images/red_ball.png) !important;
+}
+
+li.show_header {
+  text-align: center;
+  padding: 8px 0;
+}
+
+li > div.park_name {
+  text-align: center;
+  font-size: 120%;
+}
+
+li > div.hours {
+  text-align: center;
+  font-size: 85%;
+}
+
+li > div.announcement {
+  text-align: center;
+  font-size: 15px;
+  margin: 5px auto;
+  padding: 5px 0;
+  width: 295px;
+  border: 1px solid #F3282B;
+}
+
+li > div.sort_by {
+  padding: 0;
+  margin: -8px 0 -8px 0;
+}
+
+li.divider {
+  font-size: 85%;
+	padding: 6px 0 1px 10px;
+}
+
+div.row.note { 
+  margin-bottom: 10px;
+}
+
+.row > span.note {
+	color: #F3282B !important;
+  top: 22px;
+  font-size: 85%;
+  font-weight: bold;
+	text-align: right;
+	width: 250px;
+}
+
+a.user_link {
+  color: #777777;
+	display: inline;
+	margin: 0;
+	padding: 0;
+	text-decoration: underline;
+}
+
+a.user_link[selected], a.user_link:active {
+  background-color: #FFFFFF !important;
+  background: none !important;
+	color: #777777 !important;
+	text-decoration: none;
+}
+
+a.regular {
+	color: #0063C7;
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+a.regular[selected], a.regular:active {
+  background-color: #FFFFFF !important;
+  background: none !important;
+	color: #0063C7 !important;
+}
+
+a[selected] div span, a:active div span {
+  color: #FFFFFF !important;
+}
+
+div.instructions_wrap {
+  text-align: left;
+  padding: 5px 10px 10px 10px;
+}
+
+.instructions_header {
+  text-align: left;
+  font-weight: bold;
+  padding: 10px 10px 5px 10px;
+  color: #0063C7;
+}
+
+.instruct_sub_header {
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.instruct_sub_header.top {
+  padding-top: 5px;
+}
+
+.instruct_sub_text {
+  color: #777777;
+  font-size: 95%;
+}
+
+.instruct_sub_text.top {
+  padding-top: 8px;
+}
+
+.instruct_sub_text ul {
+  margin: 5px 0 5px 15px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.park_strip {
+  font-size: 85%;
+  color: #777777;
+	font-style: italic;
+  text-align: center;
+}
+
+.park_strip_refresh {
+  font-size: 85%;
+  color: #777777;
+  text-align: center;
+}
+
+.fine_print {
+  font-size: 80%;
+  color: #777777;  
+}
+
+.view_selected_plan {
+  text-align: center;
+	font-size: 95%;
+}
+
+/* makes the arrows active state not pop up */
+a[noarrow]:active {
+  background-image: none !important;
+}
+
+a.noarrow[selected], a.noarrow:active {
+  background-image: url(/images/selection.png) !important;
+}
+
+a.noarrow[selected="progress"] {
+	background-image: url(/images/loading.gif), url(/images/selection.png) !important;
+}
+
+/* make the new color attraction names white when selected */
+a[selected] div.line_name, a:active div.line_name {
+	color: #FFFFFF !important;
+}
+
+.edit_wrap {
+  display: none;
+}
+
+.edit_wrap fieldset {
+  margin-bottom: 2px;
+}
+
+.edit_button {
+  margin-top: 10px;
+}
+
+div.edit_note {
+  margin: 0 0 1px 0 !important;
+}
+
+div.today_info { 
+  font-size: 90%;
+}
+
+.toolbar > a#pageTitle {
+	position: absolute;
+	left: 50%;
+	margin: 1px 0 0 -75px;
+	height: 25px;
+	font-size: 20px;
+	width: 150px;
+	font-weight: bold;
+	text-shadow: rgba(0, 0, 0, 0.4) 0px -1px 0;
+	text-align: center;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #FFFFFF;
+	background: none !important;
+	text-decoration: none;
+}
+
+.hide_button {
+  float: right;
+  position: absolute;
+  right: 10px;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+.heck_no {
+  float: right;
+  margin: 0;
+  padding: 2px 10px 0 0;
+  font-size: 95%;
+  font-weight: bold;
+}
+
+.warning_strip {
+  font-size: 85%;
+  text-align: left;
+  padding-right: 5px;
+}
+
+.better_row {
+  text-align: left;
+  padding: 10px 14px;
+  font-weight: bold;
+  border-bottom: 1px solid #999999;
+  -webkit-border-radius: 0;
+}
+
+fieldset > .better_row:last-child {
+	border-bottom: none !important;
+}
+
+.better_row ul {
+  list-style-type: disc;
+  padding: 0 0 0 20px;
+	margin: 5px 0;
+}
+
+.better_row span.value {
+	display: block;
+	float: right;
+	padding: 0 0 0 10px;
+	margin: 0;
+	font-size: 100%;
+	letter-spacing: -0.07em;
+	color: #0063C7;
+	font-weight: bold;
+	text-decoration: none;
+	background: none;
+}
+
+.better_row div.byline {
+	padding: 0;
+	margin: 3px 0 0 14px;
+	font-weight: bold;
+  font-size: 95%;
+  color: #777777;	
+}
+
+.better_row.complete_steps, .better_row.complete_steps a {
+	color: #777777;
+}
+
+.better_row.unoptimizable, .better_row.unoptimizable a {
+	color: #777777;
+	font-style: italic;
+}
+
+.better_sub_row {
+  font-size: 95%;
+}
+
+#main_chat_box {
+  box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	width: 100%;
+	margin: 0 0 0 0;
+	padding: 6px 6px 6px 6px;
+	font-size: 16px;
+	font-weight: normal;
+}
+
+#sub_chat_box {
+  box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	width: 100%;
+	margin: 0 0 0 0;
+	padding: 6px 6px 6px 6px;
+	font-size: 16px;
+	font-weight: normal;
+}
+
+a#chat_post_button {
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 5px;
+  margin: 3px 0;
+  font-weight: bold; 
+}
+
+.reply_button_wrap {
+}
+
+.reply_button_wrap .blueButton {
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 5px;
+  margin: 3px 0;
+  font-weight: bold; 
+}
+
+.chat_wrap {
+  -webkit-user-select: text;
+}
+
+.chat_responses {
+  border-top: 1px solid #cccccc;
+  font-size: 95%;
+  margin-top: 5px;
+  padding-left: 10px;
+}
+
+.chat_paginate_wrap {
+  text-align: center;
+  padding: 6px;
+  font-weight: bold;
+}
+
+.chat_paginate_wrap a {
+	color: #0063C7;
+	display: inline;
+	margin: 0;
+	padding: 0;  
+}
+
+.chat_paginate_wrap a[selected], #chat_paginate a:active {
+  background-color: #FFFFFF !important;
+  background: none !important;
+	color: #0063C7 !important;
+}
+
+.chat_paginate_wrap h1 {
+	font-size: 120%;
+	padding: 0;
+	margin: 0;
+}
+
+.chat_paginate_wrap span.disabled {
+  color: #777777;
+}
+
+.chat_form_wrap {
+  margin-top: 5px;
+  padding-left: 10px;
+}
+
+.chat_message {
+  word-break: break-word;
+}
+
+.chat_thread_limit {
+  float: left;
+  font-size: 95%;
+  margin-top: 0px;
+  padding-top: 0px;
+  color: #777777;
+}
+
+.chat_reply_limit {
+  float: left;
+  font-size: 90%;
+  margin-top: 0px;
+  padding-top: 0px;
+  color: #999999;
+}
+
+.chat_thread_info {
+  font-size: 90%;
+}
+
+.chat_link_bump {
+  margin: 2px 0;
+}
+
+.chat_button_wrap {
+  float: right;
+  margin-top: 5px;
+}
+
+.chat_response_wrap {
+  padding: 3px 0;
+}
+
+.chat_delete_wrap {
+  margin-bottom: 5px;
+}
+
+.chat_reply_link {
+  font-size: 19px;
+}
+
+.pagination {
+  padding: 1px 0;
+  word-break: break-word;
+}
+
+ul#upsell {
+  margin: 0;
+  padding: 0 0 0 25px;
+}
+
+ul#upsell li {
+  margin: 0;
+  padding: 0;
+}
+
+.post_thread_wrap {
+  margin: 0 0 15px 0;
+  padding: 0;
+}
+
+span.min {
+  font-size: 75%;
+}
+
+span.user_login {
+  color: #777777;
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+
+.purchase-btn { 
+	position: absolute;
+	overflow: hidden;
+	top: 8px;
+	right: 6px;
+	margin: 0;
+	border-width: 0 5px;
+	padding: 0 5px;
+	width: auto;
+	height: 30px;
+	line-height: 30px;
+	font-family: inherit;
+	font-size: 13px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0;
+	text-overflow: ellipsis;
+	text-decoration: none;
+	white-space: nowrap;
+	background: none;
+	-webkit-border-image: url(/images/toolButtonWhite.png) 0 5 0 5;   
+}
+
+.sub_plan_one {
+  padding-left: 10px;
+  font-size: 90%;
+}
+
+.sub_plan_two {
+  padding-left: 10px;
+  font-size: 90%;
+  font-style: italic;
+}
+
+.purchasing { font-style:italic; line-height: 40px; margin-right:10px; }
+
+#redirect-msg { display:none; }
+
+
+/********************************* Len's additions for Lines: The Game ***************************************************/
+.blue_bold { 
+	color: #0063C7; 
+	font-weight: bold;
+}
+
+#game_app_body {
+	text-align: left;
+	color:green;
+	margin: 5px auto;
+    padding: 5px 0;
+    width: 295px;
+/*    border: 1px solid #F3282B; */
+}
+
+.game_app_data {
+  	padding-left: 2px;
+  	color:blue;
+}
+
+.game_app_label {
+	font-weight: bold;
+  	padding-left: 3px;
+  	color:gray;
+}
+
+.game_app_messages {
+	color: #CD32DD;
+	text-align: left;	
+	font-size: 12px;
+	margin: 3px auto;
+	padding: 3px 0;
+	width: 295px;
+}
+
+.game_stats_row {
+  text-align:left;
+  font-size: 15px;
+  margin: 5px auto;
+  padding: 5px 0;
+  width: 295px;
+  outline: 1px solid #808080;  /* this appears to be a grey border around things */
+}
+
+#game_stats_table {
+	text-align:left;
+	color:red;
+}
+
+/********************************* End of Len's additions for Lines: The Game ********************************************/
+
+
+.lines_menu_item table tr td {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.lines_menu_item input, 
+.lines_menu_item select {
+  padding: 6px;
+  margin: 8px;
+}
+
+.lines_menu_item select{
+
+}
+
+.lines_menu_item .submit {
+  width: auto;
+  padding: 6px 20px;
+  text-align: center;
+}
+
+.lines_menu_item .search_input{
+  text-align: center;
+  padding: 3px;
+  margin: 3px;
+}
+
+.lines_menu_item .search_input label{
+}
+
+.lines_menu_item .search_input input{
+  width: auto;
+}
+
+.lines_menu_item #snack {
+  width: auto;
+}
+
+span#more_search_options.hide_options{
+  display: none;
+}
+
+span#more_search_options.show_options{
+  display: default;
+}
+
+span#more_search_options label{
+  font-size: 1em;
+  font-weight: normal;
+}
+
+span#more_search_options select{
+  width: 100%
+}
+
+#menu_item_search .pagination span,
+#menu_item_search .pagination a {
+  margin: 5px 2px;
+}
+
+div.panel h3.result_count{
+  margin: 7px;
+  font-size: 1em;
+}
+
+
