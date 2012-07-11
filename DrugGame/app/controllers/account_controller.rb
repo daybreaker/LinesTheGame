@@ -83,7 +83,10 @@ class AccountController < ApplicationController
   
   def fight
     @user = User.find_by_id(session[:user_id])
-     @user.encounter.encounter_messages.clear
+      
+    # This can generate an error if we fight to the point where we run out of health
+    @user.encounter.encounter_messages.clear
+    
     if @user.defending < @user.encounter.attacking
       @user.encounter.encounter_messages.create(:name => "You have been hit.")
       @user.hurt(@user.encounter.damage, @user.encounter)      
@@ -94,7 +97,7 @@ class AccountController < ApplicationController
       @user.encounter.encounter_messages.create(:name => "You have stunned the enemy.")
       @user.encounter.hurt(@user.damage, @user)
     else
-      @user.encounter.encounter_messages.create(:name => "You fail to stunned the enemy.")
+      @user.encounter.encounter_messages.create(:name => "You fail to stun the enemy.")
     end
     redirect_to :action => "index"
     @user.save
@@ -105,7 +108,7 @@ class AccountController < ApplicationController
     @user = User.find_by_id(session[:user_id])
     @user.encounter.encounter_messages.clear
     if !(@user.bags.exists?)
-      @user.encounter.encounter_messages.create(:name => "You are searched and sent on your way.")
+      @user.encounter.encounter_messages.create(:name => "Your backpack is searched but nothing is confiscated.")
       @user.encounter.type_id=0
     end
     redirect_to :action => "index"

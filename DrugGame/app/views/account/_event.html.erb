@@ -1,29 +1,67 @@
-		<% user_loc = City.find_by_id(@user.location)%>		
-		<% @cur_event = Event.find_by_id(@user.event)%>
-		<h1>You are in <%= user_loc.name %></h1>
-		
-		<!-- this prints messages to the user -->
-		<% @user.messages.all.each do |mesg| -%>
-			<h2><%= mesg.name %></h2>
-  		<% end -%><br/>
-  		
-	 	<%= render 'stats' %>
- 		<table id="full_table" align="center">
- 			<tr>
- 				<td>
- 				<% if @cur_event.event_type == 1 %>
- 					<h2>Do you want to hire <%= FollowerType.find_by_id(@cur_event.type_arg1).name %> for $<%= number_with_delimiter(@cur_event.type_arg2) %>?</h2>
+<table id="game_stats_table">
+	
+	<tr class="game_stats_row">
+		<td class="game_title">
+			Lines: The Game
+		</td>
+	</tr>
+
+	<% if @user.messages.count > 0 -%>
+		<tr class="game_stats_row">
+			<td>
+				<span class="game_app_message_heading">Alerts</span>
+				<ul>
+					<% @user.messages.all.each do |mesg| -%>
+						<li class="game_app_message_li">
+							<span class="game_app_messages"><%= mesg.name %></span></br></br>
+						</li>
+  					<% end -%>
+  				</ul>
+  			</td>
+		</tr>
+	<% end -%>
+
+	<tr class="game_stats_row">
+		<td>
+			<% user_loc = City.find_by_id(@user.location)%>
+			<span class="game_app_location">You are in</span> <span class="game_app_data"><%= user_loc.name %></span>
+		</td>
+	</tr>
+	
+
+	<%= render 'stats' %>
+
+	<tr class="game_stats_row">
+ 		<td>
+ 			<span class="blue_bold">Hire Friends</span></br>
+ 			
+			<% @cur_event = Event.find_by_id(@user.event)%>
+
+			<% if @cur_event.event_type == 1 %>
+			
+					<span class="game_app_text">Do you want to hire </span> 
+ 					<span class="game_app_data"><%= FollowerType.find_by_id(@cur_event.type_arg1).name %> </span>
+ 				    <span class="game_app_text">to help you in the park? Hiring them costs</br>$</span>
+ 				    <span class="game_app_data"><%= number_with_delimiter(@cur_event.type_arg2)%></span><span class="game_app_text">.</span>
+ 				    
  					<% if @cur_event.type_arg2 > @user.wallet %>
- 						<h4>Not enough money</h4>
+ 					
+ 						<div id="error" class="msgWarn">Rats!  Not enough money to do this.  You must say no.</div>
+ 						
  					<% else %>
-	 					<%= form_tag('/account/event_accept', :method => :post, :controller => 'account' ) do %>
-	  						<%= submit_tag 'Yes' %>
-						<% end %>
+ 					
+	 						<%= form_tag('/account/event_accept', :method => :post, :controller => 'account' ) do %>
+	  							<%= submit_tag 'Yes' %>
+							<% end %>
+							
+							<span class="game_app_text"> or </span> 
+					
+	 						<%= form_tag('/account/event_reject', :method => :post, :controller => 'account' ) do %>
+  								<%= submit_tag 'No' %>
+							<% end %>
+							
 					<% end %>
-	 				<%= form_tag('/account/event_reject', :method => :post, :controller => 'account' ) do %>
-  						<%= submit_tag 'No' %>
-					<% end %>
-				<% end %>
-				</td>
- 			</tr>
-		</table>
+			<% end %>
+		</td>
+ 	</tr>
+</table>

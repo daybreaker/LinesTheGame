@@ -1,43 +1,80 @@
 <html>
-<head><style type="text/css">
-#full_table { 
-width: 80%; 
-}
-#tiny_table { 
-width: 25%; 
-}
-#small_table { 
-width: 40%; 
-}
-</style>
-</head>
+	<head></head>
 
 <body>
-<center>
- 
-<% if session[:user_id] %>
+
+ 	<table id="game_stats_table">
+ 		
+ 		<tr class="game_stats_row">
+			<td class="game_title">
+				Lines: The Game
+			</td>
+		</tr>
+	
 		<% if session[:user_id] %>
-	    <h1><%= City.find_by_id(@user.location).name %></h1>
- 		<%= render 'stats' %>
-		<table id="full_table">
-			<tr>
-				<% city = City.find_by_id(@user.location) -%>
-				<td id="small_table"> <% if city.bank %>Bank<%= form_tag('/account/savings', :method => :post, :controller => 'account' ) do %>
-  						<%= text_field_tag 'amount' %><br/>
-  						<%= submit_tag 'Deposit' %><%= submit_tag 'Withdraw' %>
-				<% end %><% end %></td>
-				<td id="small_table"><% if city.loanshark %>Loanshark<%= form_tag('/account/loanshark', :method => :post, :controller => 'account' ) do %>
-  						<%= text_field_tag 'amount' %><br/>
-  						<%= submit_tag 'Repay' %><%= submit_tag 'Borrow' %>
-				<% end %><% end %></td>
-			</tr>
-		</table>
-	<% end %>
-	<%= link_to "Back to Park", "/account/"%>		
-<% else %>
-	<%= link_to "Login", "/account/login", :controller => 'account' %><br/>
-	or <%= link_to "Register", "/account/registration", :controller => 'account' %>	
-<% end %>	
-</center>
+				
+				<% if session[:user_id] %>
+				
+			    	<tr class="game_stats_row">
+						<td>
+							<% user_loc = City.find_by_id(@user.location)%>
+							<span class="game_app_location">You are in</span> <span class="game_app_data"><%= user_loc.name %></span>
+							</br>
+							<%= link_to "Back to Park", "/account/"%>	
+						</td>
+					</tr>
+		 		
+		 			<%= render 'stats' %>
+				
+					<tr class="game_stats_row">
+							<% city = City.find_by_id(@user.location) -%>
+							<td> 
+								<% if city.bank %>
+										<span class="game_app_text">In </span>
+										<span class="game_app_data"><%= user_loc.name %></span> 
+										<span class="game_app_text">is an ATM.</br></span>
+										<span class="game_app_text">You can make deposits or withdrawls at this ATM.  Depositing money ensures it is safe if anything happens to you in the park.</br></span>
+										    <%= form_tag('/account/savings', :method => :post, :controller => 'account' ) do %>
+			  								
+			  								<span class="game_app_shop_label"><%= label_tag(:amount, "Amount:") %></span>
+			  								<%= text_field_tag(:amount, value = nil, :size=>3, :maxwidth=>3)%>
+			  								</br>
+			  								<%= submit_tag 'Deposit' %>
+			  								<span class="game_app_text">or</span> 
+			  								<%= submit_tag 'Withdraw' %>
+										<% end %>
+								<% end %>
+							</td>
+					</tr>
+					<tr class="game_stats_row">
+							<td>
+								<% if city.loanshark %>
+										<span class="game_app_text">The Sheriff of Nottingham appears.  You can borrow from him at a high interest rate, or pay back a loan.</br></span>
+										<%= form_tag('/account/loanshark', :method => :post, :controller => 'account' ) do %>
+			  							
+			  							<span class="game_app_shop_label"><%= label_tag(:amount, "Amount:") %></span>
+			  							<%= text_field_tag(:amount, value = nil, :size=>3, :maxwidth=>3)%>
+			  							
+			  							<%= submit_tag 'Repay' %>
+			  							<span class="game_app_text">or</span> 
+			  							<%= submit_tag 'Borrow' %>
+									<% end %>
+								<% end %>
+							</td>
+					</tr>
+				
+				<% end %>
+				
+					
+		<% else %>
+		
+			<tr class="game_stats_row">
+				<%= link_to "Login", "/account/login", :controller => 'account' %><br/>
+				or <%= link_to "Register", "/account/registration", :controller => 'account' %>
+			</tr>	
+		
+		<% end %>	
+	</table>
+
 </body>
 </html>

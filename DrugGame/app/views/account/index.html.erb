@@ -3,62 +3,114 @@
 </head>
 
 <body>
-<center>
- 
-<% if session[:user_id] %>
-	<% if @user.nil? %>
-		<%= link_to "Login", "account/login", :controller => 'account' %><br/>
-		or <%= link_to "Register", "account/registration", :controller => 'account' %>
-			
-	<% elsif @user.bank.nil? or @user.end_of_turn == true %>
-		<h1>Hello <%= @user.username %><br/>
-		<%= link_to "New Game", "/account/new_game", :controller => 'account' %></h1>
+
+<table id="game_stats_table">
+	
+	<% if session[:user_id] %>
+		<% if @user.nil? %>
 		
-		<div align="left">
-		<h2>High Scores</h2>
-		<% @scores = HighScore.find( :all, :order => "score DESC" ) %>
-		  <% @scores.each do |score_list| -%>
-			<h3>
-			   Name: <b></b><%= score_list.name %></b> | Earnings: $<%= number_with_delimiter(score_list.score) %> | Completed visit: <%= String(score_list.alive) %>
-			</h3>
-			<br/>
-		  <% end -%>
-		</div>
-	<% elsif @user.days_remaining < 0 %>
-		<h1>You have completed your visit!</h1>
-		<% score = @user.wallet + @user.bank.savings_account - @user.bank.loan_amount %>
-		<h1>You had $<%= number_with_delimiter(score) %>.</h1>
-		<% HighScore.create(:name => @user.username, :score => score, :alive => @user.free) %>
-		<% @user.end_of_turn = true %>
-		<% @user.save %>
-	 	<%= form_tag('/account/index', :method => :get, :controller => 'account' ) do %>
-			<%= submit_tag 'Done' %>
-		<% end %>
-	<% elsif @user.current_endurance < 1 %>
-		<h1>You have been asked to leave the park.</h1>
-		<% score = @user.wallet + @user.bank.savings_account - @user.bank.loan_amount %>
-		<h1>You had $<%= score%>.</h1>
-		<% HighScore.create(:name => @user.username, :score => score, :alive => @user.free) %>
-		<% @user.end_of_turn = true %>
-		<% @user.save %>
-	 	<%= form_tag('/account/index', :method => :get, :controller => 'account' ) do %>
-			<%= submit_tag 'Done' %>
-		<% end %>
-	<% else %>
-		<% if @user.encounter.nil? %>
-			<% if @user.event.nil? %>
-	 			<%= render 'main' %></br>	 			
- 			<% else %>
-	 			<%= render 'event' %></br>
+			<%= link_to "Login", "account/login", :controller => 'account' %><br/>
+			or <%= link_to "Register", "account/registration", :controller => 'account' %>
+			
+				
+		<% elsif @user.bank.nil? or @user.end_of_turn == true %>
+		
+			<tr class="game_stats_row">
+				<td>
+					<span class="game_app_message_heading">Game Over</span></br>
+				</td>
+			</tr>
+			
+			<tr class="game_stats_row">
+				<td>
+					<%= link_to "New Game", "/account/new_game", :controller => 'account' %>
+				</td>
+			</tr>
+			
+			<tr class="game_stats_row">
+				<td>
+					<span class="blue_bold">High Scores</span></br>
+					
+					<% @scores = HighScore.find( :all, :order => "score DESC" ) %>
+					  <% @scores.each do |score_list| -%>
+						
+						   <span class="game_app_label">Name: </span>
+						   <span class="game_app_data"><%= score_list.name %></span></br>
+						   <span class="game_app_label">Earnings: </span>
+						   <span class="game_app_data">$<%= number_with_delimiter(score_list.score) %></span></br>
+						   <span class="game_app_label">Completed visit?</span>
+						   <span class="game_app_data"><%= String(score_list.alive) %></span><br/>
+						   <br/>
+				 	 <% end -%>
+				</td>
+			</tr>
+			
+			
+		<% elsif @user.days_remaining < 0 %>
+		
+			<tr class="game_stats_row">
+				<td>
+					<span class="game_app_message_heading">You have completed your visit!</span></br>
+				</td>
+			</tr>
+			
+			<% score = @user.wallet + @user.bank.savings_account - @user.bank.loan_amount %>
+		
+			<tr class="game_stats_row">
+				<td>
+					<span class="game_app_messages">You had $<%= number_with_delimiter(score) %>.</span>
+				
+						<% HighScore.create(:name => @user.username, :score => score, :alive => @user.free) %>
+						<% @user.end_of_turn = true %>
+						<% @user.save %>
+					 	<%= form_tag('/account/index', :method => :get, :controller => 'account' ) do %>
+							<%= submit_tag 'Done' %>
+						<% end %>
+				</td>
+			</tr>
+			
+		<% elsif @user.current_endurance < 1 %>
+			
+			<tr class="game_stats_row">
+				<td>
+					<span class="game_app_message_heading">You have been asked to leave the park.</span></br>
+				</td>
+			</tr>
+			
+			
+			<% score = @user.wallet + @user.bank.savings_account - @user.bank.loan_amount %>
+			
+			<tr class="game_stats_row">
+				<td>
+					<span class="game_app_messages">You had $<%= number_with_delimiter(score) %>.</span>
+			
+					<% HighScore.create(:name => @user.username, :score => score, :alive => @user.free) %>
+					<% @user.end_of_turn = true %>
+					<% @user.save %>
+				 	<%= form_tag('/account/index', :method => :get, :controller => 'account' ) do %>
+						<%= submit_tag 'Done' %>
+					<% end %>
+			
+				</td>
+			</tr>
+			
+		<% else %>
+			<% if @user.encounter.nil? %>
+				<% if @user.event.nil? %>
+		 			<%= render 'main' %></br>	 			
+	 			<% else %>
+		 			<%= render 'event' %></br>
+		 		<% end %>
+	 		<% else %>
+	 			<%= render 'combat' %></br>
 	 		<% end %>
- 		<% else %>
- 			<%= render 'combat' %></br>
- 		<% end %>
-	<% end %>		
-<% else %>
-	<%= link_to "Login", "account/login", :controller => 'account' %><br/>
-	or <%= link_to "Register", "account/registration", :controller => 'account' %>	
-<% end %>	
-</center>
+		<% end %>		
+	<% else %>
+		<%= link_to "Login", "account/login", :controller => 'account' %><br/>
+		or <%= link_to "Register", "account/registration", :controller => 'account' %>	
+	<% end %>	
+
+</table>
+
 </body>
 </html>

@@ -26,28 +26,35 @@
 	</tr>
 	
 	
+	<% if @user.gun_instances.count > 0 -%>
+		<tr class="game_stats_row">
+			<td>
+			  <span class="blue_bold">Your Tools</span></br>
+			  <% @guns = @user.gun_instances.all %>
+			  <% @guns.each do |guns| -%>
+				<% gunstats = Gun.find_by_id(guns.type_id) %>
+				<span class="game_app_data"><%= gunstats.name %></span>
+				<span class="game_app_text"></br>Strength of </span>
+				<span class="game_app_data"><%= gunstats.damage %></span>
+				<span class="game_app_text"> and takes </span>
+				<span class="game_app_data"><%= gunstats.space %></span>
+				<span class="game_app_text"> spaces in your backpack </span><br/>
+			  <% end -%><br/>
+			</td>
+		</tr>
+	<% end -%>
 	
-	<tr class="game_stats_row">
-		<td>
-		  <span class="blue_bold">Your Tools</span></br>
-		  <% @guns = @user.gun_instances.all %>
-		  <% @guns.each do |guns| -%>
-			<% gunstats = Gun.find_by_id(guns.type_id) %>
-			<span class="game_app_data"><b><%= gunstats.name %></b> strength of <b><%= gunstats.damage %></b> and takes <b><%= gunstats.space %></b> spaces in your backpack</span><br/>
-		  <% end -%><br/>
-		</td>
-	</tr>
 	
-	
-	
-	<tr class="game_stats_row">
-		<td>
-		  <span class="blue_bold">Your Team</span></br>
-		  <% @followers = @user.followers.all %>
-		  <% @followers.each do |npc| -%>
-			<% npct = FollowerType.find_by_id(npc.type_id) %>
-			Name: <%= npc.name %><br/>
-			Endurance: <%= npc.current_endurance %> out of <%= npct.endurance %><br/>
-		  <% end -%><br/>
-		</td>
-	</tr>
+	<% if @user.followers.count > 0 -%>
+		<tr class="game_stats_row">
+			<td>
+			  <span class="blue_bold">Your Team</span></br>
+			  <% @followers = @user.followers.all %>
+			  <% @followers.each do |npc| -%>
+				<% npct = FollowerType.find_by_id(npc.type_id) %>
+					<span class="game_app_label">Name: <span>			<span class="game_app_data"><%= npc.name %></span><br/>
+					<span class="game_app_label">Endurance: <span>		<span class="game_app_data"><%= npc.current_endurance %> out of <%= npct.endurance %></span><br/>
+			  <% end -%><br/>
+			</td>
+		</tr>
+	<% end -%>

@@ -1,28 +1,65 @@
-<table id="full_table">
+<tr class="game_stats_row">
 		<td>
-		  <h3>Your Opponent(s)</h3><br/>
-		  Name: <%= @cur_fight.name %><br/>
-		  Type: <% agent_type = Agent.find_by_id(@cur_fight.type_id) %>
-		  Endurance: <%= @cur_fight.current_endurance %>/<%= agent_type.endurance %><br/>
-		  Speed: <%= agent_type.speed %><br/>
-		  Accuracy: <%= agent_type.accuracy %><br/>
-		  Evasion: <%= agent_type.evasion %><br/>
+		  <span class="blue_bold">Your Opponent(s)</span><br/>
+		  	
+		  <span class="game_app_label">Name:</span>
+		  <span class="game_app_data"><%= @cur_fight.name %><br/></span>
+		  
+		  <span class="game_app_label">Type: </span>
+		  <span class="game_app_data"><% agent_type = Agent.find_by_id(@cur_fight.type_id) %></br></span>
+		  
+		  <span class="game_app_label">Endurance: </span>
+		  <span class="game_app_data"><%= @cur_fight.current_endurance %>/<%= agent_type.endurance %><br/></span>
+		  
+		  <span class="game_app_label">Speed: </span>
+		  <span class="game_app_data"><%= agent_type.speed %><br/></span>
+		  
+		  <span class="game_app_label">Accuracy: </span>
+		  <span class="game_app_data"><%= agent_type.accuracy %><br/></span>
+		  
+		  <span class="game_app_label">Evasion: </span>
+		  <span class="game_app_data"><%= agent_type.evasion %><br/></span>
 		</td>
-		<td id="tiny_table">
-		  <h3>Opponent(s) Tools</h3><br/>
-		  <% @guns = @cur_fight.gun_instances.all %>
-		  <% @guns.each do |guns| -%>
-			<% gunstats = Gun.find_by_id(guns.type_id) %>
-			<%= gunstats.name %> causes damage of <b><%= gunstats.damage %></b> to you and <b><%= gunstats.space %></b> spaces of your backpack<br/>
-		  <% end -%><br/>
-		</td>
-		<td id="tiny_table">
-		  <h3>Opponents' Team</h3><br/>
+</tr>
+
+		
+<tr class="game_stats_row">
+		<td>
+		  <span class="blue_bold">Opponents' Team</span><br/>
+		  
 		  <% @followers = @cur_fight.followers.all %>
 		  <% @followers.each do |npc| -%>
 			<% npct = FollowerType.find_by_id(npc.type_id) %>
-			Name: <%= npc.name %><br/>
-			Endurance: <b></b><%= npc.current_endurance %></b> out of <b><%= npct.endurance %></b><br/>
-		  <% end -%><br/>
+			<span class="game_app_data">Name: </span>
+			<span class="game_app_data"><%= npc.name %><br/></span>
+			<span class="game_app_data">Endurance: </span>
+			<span class="game_app_data"><%= npc.current_endurance %></span>
+			<span class="game_app_data"> out of <%= npct.endurance %></span>
+			<br/><br/>
+		  <% end -%>
 		</td>
-</table>
+</tr>
+
+<tr class="game_stats_row">
+		<td>
+		  <span class="blue_bold">Opponent(s) Tools</span><br/>
+		  
+		  <% @guns = @cur_fight.gun_instances.all %>
+		  	<% @guns.each do |guns| -%>
+		  		<table class="game_app_shop_row">
+					<tr>
+						<td>
+							<% gunstats = Gun.find_by_id(guns.type_id) %>
+							<span class="game_app_data"><%= gunstats.name %> </span>
+							<span class="game_app_text">causes damage of </span>
+							<span class="game_app_data"><%= gunstats.damage %></span>
+							<span class="game_app_text">to you and </span>
+							<span class="game_app_data"><%= gunstats.space %> </span>
+							<span class="game_app_text">spaces of your backpack</span>
+							<br/>
+						</td>
+					</tr>
+				</table>
+		  	<% end -%>
+		</td>
+

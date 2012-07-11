@@ -1,36 +1,97 @@
-		<% user_loc = City.find_by_id(@user.location)%>		
+<table id="game_stats_table">		
+		
+		<tr class="game_stats_row">
+			<td class="game_title">
+				Lines: The Game
+			</td>
+		</tr>
+	
+		<tr class="game_stats_row">
+			<td>
+				<% user_loc = City.find_by_id(@user.location) -%>
+				<span class="game_app_location">You are in </span>
+				<span class="game_app_data"><%= user_loc.name %><span>
+			</td>
+		</tr>		
+		
+		
 		<% @cur_fight = Encounter.find_by_id(@user.encounter)%>
-		<h1><%= user_loc.name %></h1>
-		<% if @cur_fight.encounter_messages.exists?%>
-			<% @cur_fight.encounter_messages.all.each do |mesg| -%>
-				<h2><%= mesg.name %></h2>
-	  		<% end -%>
-  		<% end -%>
+		
+		
+  		
+  		
+  		
   		<% if @cur_fight.type_id == 0%>
-			<% @user.encounter.delete %>
- 			<%= form_tag('/account/index', :method => :get, :controller => 'account' ) do %>
-  				<%= submit_tag 'Done' %>
-			<% end %>
+  		
+  			<tr class="game_stats_row">
+				<td>
+					<% @user.encounter.delete %>
+		 			<%= form_tag('/account/index', :method => :get, :controller => 'account' ) do %>
+		  				<%= submit_tag 'Continue' %>
+					<% end %>
+				</td>
+			</tr>
+			
+			<!-- fight messages -->
+			<% if @cur_fight.encounter_messages.exists?%>
+				<tr class="game_stats_row">
+					<td>
+						<span class="game_app_message_heading">Messages</span>
+						<ul>
+							<% @cur_fight.encounter_messages.all.each do |mesg| -%>
+								<li class="game_app_message_li">
+									<%= mesg.name %>
+								</li>
+		  				<% end -%>
+		  			</td>
+		  		</tr>
+	  		<% end -%>
+			
+			
 		<% else %>
-			<h2>You are being chased by <%= @cur_fight.name %></h2>
-	 		<%= render 'stats' %>
-	 		<%= render 'enc_stats' %>
-	 		<table id="small_table" align="center">
-	 			<tr>
-	 				<td><% if @user.bags.exists? or @user.gun_instances.exists? %>
-	 					<%= form_tag('/account/run', :method => :post, :controller => 'account' ) do %>
-	  						<%= submit_tag 'Run' %>
-						<% end %>
-	 				<% else %>
-	 					<%= form_tag('/account/stay', :method => :post, :controller => 'account' ) do %>
-	  						<%= submit_tag 'Stay' %>
-						<% end %>
-	 				<% end %></td>
+	
+			<tr class="game_stats_row">
+				<td>
+					You are being chased by <%= @cur_fight.name %>.
+					</br>
+					
+					<% if @user.bags.exists? or @user.gun_instances.exists? %>
+			 				<%= form_tag('/account/run', :method => :post, :controller => 'account' ) do %>
+			  						<%= submit_tag 'Run' %>
+							<% end %>
+			 		<% else %>
+			 				<%= form_tag('/account/stay', :method => :post, :controller => 'account' ) do %>
+			  						<%= submit_tag 'Stay' %>
+							<% end %>
+			 		<% end %>
+				
+			 			
 	 				<% if @user.gun_instances.exists? %>
-	 					<td><%= form_tag('/account/fight', :method => :post, :controller => 'account' ) do %>
-	  						<%= submit_tag 'Fight' %>
-						<% end %></td>
-	 				<% end %>
-	 			</tr>
-			</table>
+	 						<%= form_tag('/account/fight', :method => :post, :controller => 'account' ) do %>
+	  								<%= submit_tag 'Fight' %>
+							<% end %>
+				    <% end %>
+				</td>
+			</tr>
+		
+			<!-- fight messages -->
+			<% if @cur_fight.encounter_messages.exists?%>
+				<tr class="game_stats_row">
+					<td>
+						<span class="game_app_message_heading">Messages</span>
+						<ul>
+							<% @cur_fight.encounter_messages.all.each do |mesg| -%>
+								<li class="game_app_message_li">
+									<%= mesg.name %>
+								</li>
+		  				<% end -%>
+		  			</td>
+		  		</tr>
+	  		<% end -%>
+
+			<%= render 'enc_stats' %>
+			
+	 		<%= render 'stats' %>
+
 		<% end %>
+</table>

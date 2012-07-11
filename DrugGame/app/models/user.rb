@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
     self.current_endurance = self.endurance
     self.end_of_turn = false
     self.action = 0
-    self.days_remaining = 21
+    self.days_remaining = 5
     self.free = true
     self.location = 1
     self.action = 0
