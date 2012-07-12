@@ -1057,7 +1057,7 @@ span.user_login {
 	color:green;
 	margin: 5px auto;
     padding: 5px 0;
-    width: 295px;
+   /* width: 295px; */
 /*    border: 1px solid #F3282B; */
 }
 
@@ -1086,7 +1086,7 @@ span.user_login {
 	font-weight: bold;
 	margin: 0px auto;
 	padding: 0px 0;
-	width: 295px;
+	/* width: 295px; */
 }
 
 .game_app_message_li {
@@ -1101,7 +1101,7 @@ span.user_login {
 	font-size: 12px;
 	margin: 3px auto;
 	padding: 3px 0;
-	width: 295px;
+	/* width: 295px; */
 }
 
 .game_app_shop_data {
@@ -1119,7 +1119,7 @@ span.user_login {
 
 .game_app_shop_row {
 	border-bottom: 1px dashed blue;
-	width: 295px;
+/*	width: 295px; */
 }
 
 
@@ -1141,7 +1141,7 @@ span.user_login {
   font-size: 15px;
   margin: 5px auto;
   padding: 5px 0;
-  width: 295px;
+ /*  width: 295px; */
   outline: 1px solid #808080;  /* this appears to be a grey border around things */
 }
 
