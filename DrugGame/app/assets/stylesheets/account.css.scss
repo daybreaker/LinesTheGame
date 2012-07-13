@@ -1,3 +1,114 @@
 // Place all the styles related to the Account controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.blue_bold { 
+	color: #0063C7; 
+	font-weight: bold;
+}
+
+#game_app_body {
+	text-align: left;
+	color:green;
+	margin: 5px auto;
+    padding: 5px 0;
+   /* width: 295px; */
+/*    border: 1px solid #F3282B; */
+}
+
+.game_app_data {
+  	padding-left: 2px;
+  	color:blue;
+}
+
+.game_app_label {
+	font-weight: bold;
+  	padding-left: 3px;
+  	color:gray;
+}
+
+.game_app_location {
+	font-weight: bold;
+  	padding-left: 0px;
+  	color:black;
+}
+
+
+.game_app_message_heading {
+	color: green;
+	text-align: left;	
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0px auto;
+	padding: 0px 0;
+	/* width: 295px; */
+}
+
+.game_app_message_li.ui-li-desc {
+  text-align: center;
+  padding: 5px 0;	
+  margin: 0;
+}
+
+.game_app_messages {
+	color: green;
+	font-size: 14px;
+  font-weight: bold
+}
+
+.game_app_shop_data {
+  	padding-left: 2px;
+  	color:blue;
+  	font-size: smaller;
+}
+
+.game_app_shop_label {
+	font-weight: bold;
+  	padding-left: 3px;
+  	font-size: smaller;
+  	color:gray;
+}
+
+.game_app_shop_row {
+	border-bottom: 1px dashed blue;
+/*	width: 295px; */
+}
+
+
+.game_app_text {
+	font-weight: normal;
+  	padding-left: 0px;
+  	color:black;
+}
+
+.game_shop_market {
+	color: #0063C7; 
+	font-weight: bold;
+	text-align: center;
+}
+
+
+.game_stats_row {
+  text-align:left;
+  font-size: 15px;
+  margin: 5px auto;
+  padding: 5px 0;
+ /*  width: 295px; */
+  outline: 1px solid #808080;  /* this appears to be a grey border around things */
+}
+
+#game_stats_table {
+	text-align:left;
+	color:red;
+}
+
+.game_title {
+	text-align: center;
+	font-weight: bold;
+	color: #8B0000;
+	border: 1px solid gray;
+}
+
+.center {
+  text-align: center;
+}

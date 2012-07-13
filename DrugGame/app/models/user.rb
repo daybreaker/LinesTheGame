@@ -4,11 +4,9 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   validates_presence_of :password
   validates_confirmation_of :password
-  attr_accessible :username, :password, :password_confirmation, :salt,
-  :wallet, :days_remaining, :end_of_turn, :free, :speed, :accuracy,
-  :evasion, :endurance, :current_endurance, :action, :nextaction,
-  :spaces, :location
+
   
+  belongs_to :city
   has_one :bank, :dependent => :destroy
   has_one :encounter, :dependent => :destroy
   has_one :event, :dependent => :destroy
@@ -61,7 +59,7 @@ class User < ActiveRecord::Base
     self.action = 0
     self.days_remaining = 5
     self.free = true
-    self.location = 1
+    self.city_id = 1
     self.action = 0
     self.generate_market(self)
     #Drug.all.each_with_index do |drug, select_number|
@@ -72,7 +70,7 @@ class User < ActiveRecord::Base
   
   def generate_market(user)
     self.shops.clear
-    userloc = City.find_by_id(self.location)
+    userloc = self.city
     amount_units = userloc.amount_units
     cur_units = 0
     if userloc.always_unit.nil? == false

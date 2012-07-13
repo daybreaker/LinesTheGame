@@ -1,0 +1,23 @@
+<div data-role="page" id="buy">
+  <%= render 'layouts/header', :back => true, :title => "Buy Items" %>
+  <ul data-role="listview">
+	  <% @user.shops.each do |shop| -%>
+      <li>
+        <span class="game_app_shop_data"><%= shop.name %></span> 
+        <span class="game_app_text">for</span> 
+        <span class="game_app_shop_data">$<%= number_with_delimiter(shop.price) %> each</span>
+        &nbsp;&nbsp;&nbsp;( max: <%= @user.wallet / shop.price %> )<br/>
+		    <%= form_tag("/account/buy", :method => "get") do %>
+			    <%= hidden_field_tag('type_id', shop.type_id) %>
+			    <%= hidden_field_tag('price', shop.price) %>
+			    <%= hidden_field_tag('name', shop.name) %>
+          <div data-role="fieldcontain" class="ui-hide-label">
+            <%= label_tag(:amount, "Amount:") %></span>
+			      <%= text_field_tag(:amount, value = nil, :size=>3, :maxwidth=>3)%>
+			    </div>
+			    <%= submit_tag("Buy") %>
+      	<% end -%>
+	    </li>
+	  <% end -%>
+  </ul>
+</div>

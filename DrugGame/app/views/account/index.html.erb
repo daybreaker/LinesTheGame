@@ -1,63 +1,35 @@
-<html>
-<head>
-</head>
-
-<body>
-
-<table id="game_stats_table">
-	
-	<% if session[:user_id] %>
-		<% if @user.nil? %>
-		
-			<%= link_to "Login", "account/login", :controller => 'account' %><br/>
-			or <%= link_to "Register", "account/registration", :controller => 'account' %>
-			
-				
-		<% elsif @user.bank.nil? or @user.end_of_turn == true %>
-		
-			<tr class="game_stats_row">
-				<td>
-					<span class="game_app_message_heading">Game Over</span></br>
-				</td>
-			</tr>
-			
-			<tr class="game_stats_row">
-				<td>
-					<%= link_to "New Game", "/account/new_game", :controller => 'account' %>
-				</td>
-			</tr>
-			
-			<tr class="game_stats_row">
-				<td>
+<div data-role="content">
+  <% if @user.nil? %>
+    <ul data-role="listview">
+      <li><%= link_to "Login", "account/login", :controller => 'account' %></li>
+		  <li><%= link_to "Register", "account/registration", :controller => 'account' %></li>
+    </ul>
+  <% else %>  
+    <% if @user.bank.nil? || @user.end_of_turn %>
+      <ul data-role="listview">
+        <li>
+					<span class="game_app_message_heading">Game Over</span>
+				</li>
+			  <li>
+					<%= link_to "New Game", "/account?new_game=true", :controller => 'account' %>
+				</li>
+				<li>
 					<span class="blue_bold">High Scores</span></br>
-					
-					<% @scores = HighScore.find( :all, :order => "score DESC" ) %>
-					  <% @scores.each do |score_list| -%>
-						
-						   <span class="game_app_label">Name: </span>
-						   <span class="game_app_data"><%= score_list.name %></span></br>
-						   <span class="game_app_label">Earnings: </span>
-						   <span class="game_app_data">$<%= number_with_delimiter(score_list.score) %></span></br>
-						   <span class="game_app_label">Completed visit?</span>
-						   <span class="game_app_data"><%= String(score_list.alive) %></span><br/>
-						   <br/>
-				 	 <% end -%>
-				</td>
-			</tr>
-			
-			
-		<% elsif @user.days_remaining < 0 %>
-		
-			<tr class="game_stats_row">
-				<td>
+				  <% @scores = HighScore.find( :all, :order => "score DESC", :limit => 5 ) %>
+				  <ul>
+				    <% @scores.each do |score_list| -%>
+						  <li><strong><%= score_list.name %></strong> $<%= number_with_delimiter(score_list.score) %></li>
+			 	    <% end -%>
+			 	  </ul>
+				</li>
+			</ul>
+    <% elsif @user.days_remaining < 0 %>
+      <ul data-role="listview">
+				<li>
 					<span class="game_app_message_heading">You have completed your visit!</span></br>
-				</td>
-			</tr>
-			
-			<% score = @user.wallet + @user.bank.savings_account - @user.bank.loan_amount %>
-		
-			<tr class="game_stats_row">
-				<td>
+				</li>
+			  <% score = @user.wallet + @user.bank.savings_account - @user.bank.loan_amount %>
+				<li>
 					<span class="game_app_messages">You had $<%= number_with_delimiter(score) %>.</span>
 				
 						<% HighScore.create(:name => @user.username, :score => score, :alive => @user.free) %>
@@ -66,22 +38,16 @@
 					 	<%= form_tag('/account/index', :method => :get, :controller => 'account' ) do %>
 							<%= submit_tag 'Done' %>
 						<% end %>
-				</td>
-			</tr>
-			
+				</li>
+			</ul>
 		<% elsif @user.current_endurance < 1 %>
 			
-			<tr class="game_stats_row">
-				<td>
+			<ul data-role="listview">
+				<li>
 					<span class="game_app_message_heading">You have been asked to leave the park.</span></br>
-				</td>
-			</tr>
-			
-			
-			<% score = @user.wallet + @user.bank.savings_account - @user.bank.loan_amount %>
-			
-			<tr class="game_stats_row">
-				<td>
+				</li>
+			  <% score = @user.wallet + @user.bank.savings_account - @user.bank.loan_amount %>
+				<li>
 					<span class="game_app_messages">You had $<%= number_with_delimiter(score) %>.</span>
 			
 					<% HighScore.create(:name => @user.username, :score => score, :alive => @user.free) %>
@@ -91,9 +57,8 @@
 						<%= submit_tag 'Done' %>
 					<% end %>
 			
-				</td>
-			</tr>
-			
+				</li>
+			</ul>
 		<% else %>
 			<% if @user.encounter.nil? %>
 				<% if @user.event.nil? %>
@@ -104,13 +69,7 @@
 	 		<% else %>
 	 			<%= render 'combat' %></br>
 	 		<% end %>
-		<% end %>		
-	<% else %>
-		<%= link_to "Login", "account/login", :controller => 'account' %><br/>
-		or <%= link_to "Register", "account/registration", :controller => 'account' %>	
-	<% end %>	
-
-</table>
-
-</body>
-</html>
+	
+    <% end %>
+  <% end %>
+</div>

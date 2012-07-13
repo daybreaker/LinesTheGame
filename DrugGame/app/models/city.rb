@@ -1,7 +1,5 @@
 class City < ActiveRecord::Base
-  attr_accessible :bank, :clean, :enemy_chance, :event_chance,
-  :hospital, :loanshark, :max_units, :min_units, :name, :pub,
-  :shop, :always_unit
+  has_many :users
   
   def amount_units
     rand((self.max_units-self.min_units)) + self.min_units

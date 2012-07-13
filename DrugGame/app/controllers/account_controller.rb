@@ -1,35 +1,29 @@
 class AccountController < ApplicationController
   def index
     @user = User.find_by_id(session[:user_id])
-  end
-  
-  def new_game
-    @user = User.find_by_id(session[:user_id])
-    @user.new_game
-    redirect_to :action => "index"
+    @user.new_game if params[:new_game]
   end
   
   def travel
-    @user = User.find_by_id(session[:user_id])
+    @user = User.find(session[:user_id])
     @user.messages.clear
     @user.days_remaining -= 1
     if @user.days_remaining == 1
       @user.messages.create(:name => "Your trip ends tomorrow!")
     end
-    @user.location = params[:location]
+    @user.city = City.find(params[:location])
     @user.generate_market(@user)
     @user.bank.add_daily_interest
-    current_city = City.find_by_id(@user.location) 
-    current_city.encounter_roll(@user) 
+    @user.city.encounter_roll(@user) 
     ######################################
     # What does this do?
     ######################################
-    current_city.event_roll(@user)
+    @user.city.event_roll(@user)
     
     ######################################
     # Something about friends
     ######################################
-    if @user.event.nil? and current_city.pub == true
+    if @user.event.nil? and @user.city.pub
       bitches = FollowerType.find_all_by_hirable(true)
       bitch_number = rand(bitches.count)
       bitch_current = 0
@@ -56,8 +50,8 @@ class AccountController < ApplicationController
       # end of section added by len 29 Jun 2012
       #####################################################
     end
-    redirect_to :action => "index"
     @user.save
+    redirect_to :action => "index"
   end
   
   def run

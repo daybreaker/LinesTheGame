@@ -8,7 +8,7 @@
 	
 		<tr class="game_stats_row">
 			<td>
-				<% user_loc = City.find_by_id(@user.location) -%>
+				<% user_loc = @user.city -%>
 				<span class="game_app_location">You are in </span>
 				<span class="game_app_data"><%= user_loc.name %><span>
 			</td>

@@ -2,17 +2,17 @@
 <html>
 <head>
   <title>Lines: The Game</title>
-  <!-- 
   <%= stylesheet_link_tag    "application", :media => "all" %> 
-  <link href="/stylesheets/webkit.css" media="screen" rel="stylesheet" type="text/css" />
-  -->
-  <%= stylesheet_link_tag    "/stylesheets/webkit", :media => "all" %> 
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body id="game_app_body">
-	
-<%= yield %>
+  <div data-role="page" id="main">
+  
+    <%= render 'layouts/header' %>
 
+    <%= yield %>
+  </div>
+  <%= yield :new_pages %>
 </body>
 </html>

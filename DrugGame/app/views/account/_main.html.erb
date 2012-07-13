@@ -1,124 +1,56 @@
-<table id="game_stats_table">
-	
-	<tr class="game_stats_row">
-		<td class="game_title">
-			Lines: The Game
-		</td>
-	</tr>
-	
+<ul data-role="listview">
 	<% if @user.messages.count > 0 -%>
-		<tr class="game_stats_row">
-			<td>
-				<span class="game_app_message_heading">Alerts</span>
-				<ul>
-					<% @user.messages.all.each do |mesg| -%>
-						<li class="game_app_message_li">
-							<span class="game_app_messages"><%= mesg.name %></span></br></br>
-						</li>
-  					<% end -%>
-  				</ul>
-  			</td>
-		</tr>
-	<% end -%>
-	
-	
-	<tr class="game_stats_row">
-		<td>
-			<% user_loc = City.find_by_id(@user.location)%>
-			<span class="game_app_location">You are in</span> <span class="game_app_data"><%= user_loc.name %></span>
-		</td>
-	</tr>
-	
-  	<% if flash[:notice] -%>
-  		<tr class="game_stats_row">
-			<td>
-  				<div id="error" class="msgWarn">
-  				<%= flash[:notice] -%></br></br>
-  				</div>
-  			</td>
-		</tr>
-	<% end -%>
-	
-	
-	
-	
-	<%= render 'stats' %>
- 	
- 	
- 	
- 
-	<% city = City.find_by_id(@user.location) -%>
-		<% if city.bank || city.loanshark %>
-			<tr class="game_stats_row">
-				<td>
-					<span class="blue_bold">A Bank Is Available</span></br>
-			 	 	<%= form_tag("/account/banking", :method => "get") do %>
-			 	 	<%= submit_tag("Go To Bank") %>
-			 	</td>
-			</tr>
-	 	<% end -%>
-	<% end -%>
-	
-	
-   	
-	<% if city.shop %>
-	 	<tr class="game_stats_row">
-	  		<td>
-	  			<span class="blue_bold">Tools Are Available Here</span></br>
-	  			<%= form_tag("/account/shop", :method => "get") do %>
-				  <%= submit_tag("Shop for Tools") %>
-	  			<% end -%>
-	  		</td>
-		</tr>
-	<% end -%>
-	  	
-	
-	
-	<% if city.hospital %>
-		<tr class="game_stats_row">	
-	  		<td>
-	  			<span class="blue_bold">First Aid Is Available</span></br>
-		  		<%= form_tag("/account/hospital", :method => "get") do %>
-			  		<%= submit_tag("Go to First Aid") %>
-		  		<% end -%>
-	  		</td>
-	  	</tr>
-	<% end -%>
-	  		
-
-<!-- Was another table declaration here -->
-	
-	<tr class="game_stats_row">
-		<td>
-			<span class="blue_bold">Street Items You Can Buy</span></br>
-
-
-			
-			<% @shops = @user.shops.all %>
-				<% @shops.each do |shop| -%>
-				
-			
-				
-					<span class="game_app_shop_data"><%= shop.name %></span> <span class="game_app_text">for</span> <span class="game_app_shop_data">$<%= number_with_delimiter(shop.price) %> each</span><br/>
-					<table class="game_app_shop_row">
-						<tr>
-							<td>
-								<%= form_tag("/account/buy", :method => "get") do %>
-									<%= hidden_field_tag('type_id', shop.type_id) %>
-									<%= hidden_field_tag('price', shop.price) %>
-									<%= hidden_field_tag('name', shop.name) %>
-									<span class="game_app_shop_label"><%= label_tag(:amount, "Amount:") %></span>
-			  						<%= text_field_tag(:amount, value = nil, :size=>3, :maxwidth=>3)%>
-			  				
-			  						<%= submit_tag("Buy") %>
-  									<% end -%>
-							</td>
-							
-						</tr>
-					</table>
+		<li>
+		  <% @user.messages.all.each do |mesg| -%>
+				<p class="game_app_message_li">
+					<span class="game_app_messages"><%= mesg.name %></span>
+				</p>
 			<% end -%>
-		</td>
-	</tr>
+  	</li>
+	<% end -%>
+	
+	
+	<li class="center">
+		<span class="game_app_location">You are in</span> <span class="game_app_data"><%= @user.city.name %></span>
+	</li>
+	
+ 	<% if flash[:notice] -%>
+    <li>
+    	<div id="error" class="msgWarn">
+  			<%= flash[:notice] -%></br></br>
+  		</div>
+  	</li>
+	<% end -%>
+	
+	<li class="center">
+	   <span class="game_app_label">In pocket:</span>			<span class="game_app_data"> $ <%= number_with_delimiter(@user.wallet) %></span> 
+		  <span class="game_app_label">In bank:</span>				<span class="game_app_data"> $ <%= number_with_delimiter(@user.bank.savings_account) %></span><br/>
+		  <span class="game_app_label">Loans owed:</span>			<span class="game_app_data"> $ <%= number_with_delimiter(@user.bank.loan_amount) %></span><br/>
+		  <span class="game_app_label">Trip days left:</span>		<span class="game_app_data"> <%= @user.days_remaining %></span>
+	</li>
+</ul>
+
+<ul data-role="listview" data-inset="true">
+	<li><a href="#">User Stats</a></li>
+ 	<% if @user.city.bank || @user.city.loanshark %>
+ 	  <li><a href="/account/banking">Go to the Bank</a></li>
+ 	<% end %>
+ 	<% if @user.city.shop %>
+ 	  <li><a href="/account/shop">Buy Tools</a></li>
+ 	<% end %>
+ 	<% if @user.city.hospital %>
+ 	  <li><a href="/account/hospital">First Aid</a></li>
+ 	<% end %>
+ 	<li><a href="#buy">Buy Items</a></li>
+ 	<li><a href="#">Sell Items</a></li>
+ 	<li><a href="#travel">Visit a New Location</a></li>
+</ul> 	
+
+
+<% content_for :new_pages do %>
+ 	<%= render 'stats' %>
+
+  <%= render 'buy_items' %>
 	
 	
 	<tr class="game_stats_row">			
@@ -171,27 +103,18 @@
 	
 <!-- here -->	
 	
-	<tr class="game_stats_row">				
-		<td>
-			<span class="blue_bold">Places You Can Visit</span>
-			
-			<% City.all.each do |location| -%>
-			
-			<table class="game_app_shop_row">
-				<tr>
-					<td>
-					  <%= form_tag("/account/travel", :method => "get") do %>
-					  	<%= hidden_field_tag('location', location.id) %>
-					  	<% if location.id != @user.location%>
-							<%= submit_tag(location.name) %>
-					  	<% else %>
-							<%= submit_tag(location.name, :disabled => true) %>
-					  	<% end -%>
-					  <% end -%>
-					</td>
-			   </tr>
-			 </table>
-		   <% end -%>
-		</td>
-	</tr>
-</table>
+	<div data-role="page" id="travel">				
+		<%= render 'layouts/header', :back => true, :title => "Places to Travel" %>
+    <ul data-role="listview">
+		  <% City.all.each do |location| -%>
+		    <li>
+		      <% if location.id != @user.city.id %>
+  				  <%= link_to location.name, "/account/travel?location=#{location.id}", :rel => "external" %>
+  				<% else %>
+  				  Currently at <%= location.name %>
+  				<% end %>
+				</li>
+	    <% end -%>
+	  </ul>
+	</div>
+<% end %>
